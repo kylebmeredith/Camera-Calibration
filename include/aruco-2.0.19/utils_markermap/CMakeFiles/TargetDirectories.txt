@@ -1,0 +1,13 @@
+/home/kbmeredith/public_html/Summer_Research_2017/aruco-2.0.19/utils_markermap/utils_calibration/CMakeFiles/aruco_calibration_fromimages.dir
+/home/kbmeredith/public_html/Summer_Research_2017/aruco-2.0.19/utils_markermap/utils_markermap/CMakeFiles/aruco_markermap_pix2meters.dir
+/home/kbmeredith/public_html/Summer_Research_2017/aruco-2.0.19/utils_markermap/utils/CMakeFiles/aruco_print_marker.dir
+/home/kbmeredith/public_html/Summer_Research_2017/aruco-2.0.19/utils_markermap/utils/CMakeFiles/aruco_print_dictionary.dir
+/home/kbmeredith/public_html/Summer_Research_2017/aruco-2.0.19/utils_markermap/utils/CMakeFiles/aruco_test.dir
+/home/kbmeredith/public_html/Summer_Research_2017/aruco-2.0.19/utils_markermap/src/CMakeFiles/aruco.dir
+/home/kbmeredith/public_html/Summer_Research_2017/aruco-2.0.19/utils_markermap/utils/CMakeFiles/aruco_simple.dir
+/home/kbmeredith/public_html/Summer_Research_2017/aruco-2.0.19/utils_markermap/CMakeFiles/uninstall.dir
+/home/kbmeredith/public_html/Summer_Research_2017/aruco-2.0.19/utils_markermap/utils/CMakeFiles/aruco_tracker.dir
+/home/kbmeredith/public_html/Summer_Research_2017/aruco-2.0.19/utils_markermap/utils_markermap/CMakeFiles/aruco_create_markermap.dir
+/home/kbmeredith/public_html/Summer_Research_2017/aruco-2.0.19/utils_markermap/utils_calibration/CMakeFiles/aruco_calibration.dir
+/home/kbmeredith/public_html/Summer_Research_2017/aruco-2.0.19/utils_markermap/utils_markermap/CMakeFiles/aruco_unique_markermaps.dir
+/home/kbmeredith/public_html/Summer_Research_2017/aruco-2.0.19/utils_markermap/utils_markermap/CMakeFiles/aruco_simple_markermap.dir

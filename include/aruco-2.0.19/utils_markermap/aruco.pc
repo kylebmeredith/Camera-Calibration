@@ -1,0 +1,14 @@
+# pkg-config file for the library
+
+prefix=/usr/local
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: aruco
+Description: ARUCO Library for marker detection
+Version:  
+Requires: 
+Conflicts: 
+Libs: -laruco
+Cflags: -I${includedir}/aruco -I${includedir}

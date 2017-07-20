@@ -1,0 +1,34 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../src/dictionary.h
+map
+-
+string
+-
+iostream
+-
+vector
+-
+stdint.h
+-
+exports.h
+../src/exports.h
+opencv2/core/core.hpp
+-
+
+../src/exports.h
+
+/home/kbmeredith/public_html/Summer_Research_2017/aruco-2.0.19/utils/aruco_print_dictionary.cpp
+dictionary.h
+/home/kbmeredith/public_html/Summer_Research_2017/aruco-2.0.19/utils/dictionary.h
+opencv2/highgui/highgui.hpp
+-
+string
+-
+
