@@ -1,0 +1,11 @@
+ CC = g++
+ARUCO = ../aruco-2.0.19
+
+CPPFLAGS = -O2 -W -g -Wall -I$(ARUCO)/src -std=c++11
+LDLIBS = -lopencv_core -lopencv_highgui -lopencv_imgproc -lopencv_calib3d -lopencv_features2d -fopenmp -L$(ARUCO)/build/src -laruco
+
+BIN = test calibration stereoCalibration camera_calibration imagelist_creator readwrite imginfo showimg showvideo smooth canny videoedges imdiff
+all: $(BIN)
+
+clean:
+	rm -f $(BIN) *.o core*

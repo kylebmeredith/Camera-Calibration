@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<opencv_storage>
+<R type_id="opencv-matrix">
+  <rows>3</rows>
+  <cols>3</cols>
+  <dt>d</dt>
+  <data>
+    1. 1.6507181312321360e-14 3.0943277536321692e-14
+    -1.6507181312321360e-14 1. -1.3149738939774872e-13
+    -3.0943277536321692e-14 1.3149738939774872e-13 1.</data></R>
+</opencv_storage>

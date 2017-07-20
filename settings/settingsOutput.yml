@@ -1,0 +1,22 @@
+%YAML:1.0
+Settings:
+   Mode: INTRINSIC
+   Calibration_Pattern: CHESSBOARD
+   ChessboardSize_Width: 12
+   ChessboardSize_Height: 17
+   SquareSize: .025
+   imageList_Filename: "singleChessboardFull.xml"
+   arucoConfigList_Filename: "boxConfigs.xml"
+   intrinsicInput_Filename: "0"
+   IntrinsicOutput_Filename: "testIn2.yml"
+   UndistortedImages_Path: "0"
+   ExtrinsicOutput_Filename: "testOut.yml"
+   RectifiedImages_Path: "0"
+   Calibrate_FixDistCoeffs: "00111"
+   Calibrate_FixAspectRatio: 0.
+   Calibrate_AssumeZeroTangentialDistortion: 0
+   Calibrate_FixPrincipalPointAtTheCenter: 0
+   Show_UndistortedImages: 0
+   Show_UndistortedImages: 0
+   Show_ArucoMarkerCoordinates: 1
+   LivePreviewCameraID: "0"

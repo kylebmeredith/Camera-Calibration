@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<opencv_storage>
+<Settings>
+  <!-- Program mode:
+        INTRINSIC —  -->
+  <Mode>"PREVIEW"</Mode>
+  <Calibration_Pattern>"ARUCO_SINGLE"</Calibration_Pattern>
+
+  <!-- Number of inner corners per chessboard row and column-->
+  <ChessboardSize_Width>8</ChessboardSize_Width>
+  <ChessboardSize_Height>6</ChessboardSize_Height>
+  <!-- The size of a square in some user defined metric system (pixel, millimeter)-->
+  <SquareSize>.025</SquareSize>
+
+  <imageList_Filename>"stereoAruco.xml"</imageList_Filename>
+  <arucoConfigList_Filename>"singleConfig.xml"</arucoConfigList_Filename>
+
+  <intrinsicInput_Filename>"intrinsicsCoeffs/intrinsics1.yml"</intrinsicInput_Filename>
+
+  <IntrinsicOutput_Filename>"testIn2.yml"</IntrinsicOutput_Filename>
+  <ExtrinsicOutput_Filename>"arucoStereoExtrinsics.yml"</ExtrinsicOutput_Filename>
+
+  <UndistortedImages_Path>"0"</UndistortedImages_Path>
+  <RectifiedImages_Path>"0"</RectifiedImages_Path>
+
+  <Calibrate_FixDistCoeffs>"00111"</Calibrate_FixDistCoeffs>
+  <!-- Consider only fy as a free parameter, the ratio fx/fy stays the same as in the input cameraMatrix.
+	   Use or not setting. 0 - False   Non-Zero - True-->
+  <Calibrate_FixAspectRatio>0</Calibrate_FixAspectRatio>
+  <!-- If true (non-zero) tangential distortion coefficients  are set to zeros and stay zero.-->
+  <Calibrate_AssumeZeroTangentialDistortion>0</Calibrate_AssumeZeroTangentialDistortion>
+  <!-- If true (non-zero) the principal point is not changed during the global optimization.-->
+  <Calibrate_FixPrincipalPointAtTheCenter>0</Calibrate_FixPrincipalPointAtTheCenter>
+
+  <!-- If true (non-zero) we show after calibration the undistorted images.-->
+  <Show_UndistortedImages>0</Show_UndistortedImages>
+  <Show_RectifiedImages>0</Show_RectifiedImages>
+  <Show_ArucoMarkerCoordinates>1</Show_ArucoMarkerCoordinates>
+
+  <LivePreviewCameraID>"0"</LivePreviewCameraID>
+
+</Settings>
+</opencv_storage>
