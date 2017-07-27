@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <opencv_storage>
 <images>
-images/singleChessboardFull/IMG_0.png
-images/singleChessboardFull/IMG_1.png
-images/singleChessboardFull/IMG_2.png
-images/singleChessboardFull/IMG_3.png
+../images/singleChessboardFull/IMG_0.png
+../images/singleChessboardFull/IMG_1.png
+../images/singleChessboardFull/IMG_2.png
+../images/singleChessboardFull/IMG_3.png
 </images>
 </opencv_storage>

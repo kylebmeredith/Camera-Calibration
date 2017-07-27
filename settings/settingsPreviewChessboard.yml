@@ -1,0 +1,31 @@
+%YAML:1.0
+Settings:
+  #Program mode:
+  #   INTRINSIC  — calculates intrinsics parameters which undistort images
+  #   STEREO     — calculates stereo paramaters and rectifies images
+  #   PREVIEW    — detects pattern on live feed, previewing quality of calibration
+  Mode: PREVIEW
+  #Three supported calibration patterns: CHESSBOARD, ARUCO_SINGLE, ARUCO_BOX
+  Calibration_Pattern: CHESSBOARD
+  #Number of inner corners per chessboard row and column
+  ChessboardSize_Width: 17
+  ChessboardSize_Height: 12
+  #The size of a square in some user defined metric system (pixel, millimeter)
+  SquareSize: .025
+  imageList_Filename: "0"
+  arucoConfigList_Filename: "../configLists/boxConfigs.xml"
+  intrinsicInput_Filename: "../intrinsics/intrinsics2.yml"
+  IntrinsicOutput_Filename: "0"
+  UndistortedImages_Path: "0"
+  ExtrinsicOutput_Filename: "0"
+  RectifiedImages_Path: "0"
+  #A string of five digits (0 or 1) that control which distortion coefficients will be fixed
+  Calibrate_FixDistCoeffs: "00111"
+  # Consider only fy as a free parameter, the ratio fx/fy stays the same as in the input cameraMatrix.
+  Calibrate_FixAspectRatio: 0       #Use or not setting.   0 - False   Non-Zero - True
+  Calibrate_AssumeZeroTangentialDistortion: 0
+  Calibrate_FixPrincipalPointAtTheCenter: 0
+  Show_UndistortedImages: 1
+  Show_RectifiedImages: 0
+  Show_ArucoMarkerCoordinates: 1
+  LivePreviewCameraID: "0"

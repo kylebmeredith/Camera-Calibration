@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <opencv_storage>
 <Settings>
-  <!-- Program mode:
-        INTRINSIC —  -->
   <Mode>"PREVIEW"</Mode>
   <Calibration_Pattern>"ARUCO_SINGLE"</Calibration_Pattern>
 

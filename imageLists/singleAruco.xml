@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <opencv_storage>
 <images>
-images/singleAruco/frame0.png
-images/singleAruco/frame1.png
-images/singleAruco/frame2.png
-images/singleAruco/frame3.png
-images/singleAruco/frame4.png
-images/singleAruco/frame5.png
+../images/singleAruco/frame0.png
+../images/singleAruco/frame1.png
+../images/singleAruco/frame2.png
+../images/singleAruco/frame3.png
+../images/singleAruco/frame4.png
+../images/singleAruco/frame5.png
 </images>
 </opencv_storage>

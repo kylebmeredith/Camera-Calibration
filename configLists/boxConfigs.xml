@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <opencv_storage>
 <configs>
-  configs/config3.yml
-  configs/config2.yml
-  configs/config1.yml
+  ../configs/config3.yml
+  ../configs/config2.yml
+  ../configs/config1.yml
 </configs>
 </opencv_storage>
