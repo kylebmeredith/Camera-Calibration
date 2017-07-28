@@ -26,7 +26,8 @@ authors and should not be interpreted as representing official policies, either 
 or implied, of Rafael Muñoz Salinas.
 ********************************/
 
-//Creation of MarkerMap to be printed in a piece of paper. This is the old boards in Aruco 1.x.x
+//Creation of MarkerMap to be printed in a piece of paper.
+//Modified by Kyle Meredith
 
 #include <string>
 #include "markermap.h"
@@ -42,7 +43,7 @@ int main(int argc, char **argv) {
     try {
         CmdLineParser cml(argc,argv);
         if (argc < 2 || cml["-h"]) {
-            cerr << "Usage: X:Y [-d dictionary_name (ARUCO_MIP_36h12 default)] [-s <pixSize>] [-smm mmSize (marker size in mm)][-t <Type>(0: panel,1: chessboard )] [-r rand_seed] [-n numOfMaps] [-b border (0: no, 1: yes)] [-bc borderCoefficient (fraction of marker size)] [-i interMarkerDistance(0,1)]" << endl;
+            cerr << "Usage: X:Y [-d dictionary_name (ARUCO_MIP_36h12 default)] [-s <pixSize>] [-t <Type>(0: panel,1: chessboard )] [-r rand_seed] [-n numOfMaps] [-b border (0: no, 1: yes)] [-bc borderCoefficient (fraction of marker size)] [-i interMarkerDistance(0,1)]" << endl;
             cerr<<"\tDictionaries: "; for(auto dict:aruco::Dictionary::getDicTypes())    cerr<<dict<<" ";cerr<<endl;
             return -1;
         }
@@ -54,8 +55,6 @@ int main(int argc, char **argv) {
 
         auto Dict=aruco::Dictionary::loadPredefined(cml("-d","ARUCO_MIP_36h12"));
         float pixSize = stoi(cml("-s","250"));
-        float mmSize = stoi(cml("-smm","0"));
-        if (mmSize != 0) pixSize = mmSize * 3.7795;
         int typeMarkerMap = stoi(cml("-t","1"));
         int rand_seed = stoi(cml("-r","0"));
         int numOfMaps = stoi(cml("-n","3"));

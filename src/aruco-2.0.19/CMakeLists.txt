@@ -40,7 +40,7 @@ endif()
 
 OPTION(USE_OWN_EIGEN3	"Set to OFF to use a standard eigen3 version" ON)
 OPTION(USE_DOUBLE_PRECISION_PNP "Set Double/float precision for posetracker" ON)
-OPTION(BUILD_UTILS	"Set to OFF to not compile utils " ON)
+OPTION(BUILD_UTILS	"Set to OFF to not compile utils " OFF)
 OPTION(BUILD_TESTS	"Set to OFF to not compile utils " OFF)
 OPTION(BUILD_SHARED_LIBS 	"Set to OFF to build static libraries" OFF)
 OPTION(BUILD_GLSAMPLES 	"Set to OFF to build static libraries" OFF)

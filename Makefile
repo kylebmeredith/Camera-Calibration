@@ -1,27 +1,29 @@
 CXX = g++
 ARUCO_DIR = src/aruco-2.0.19
 
-CPPFLAGS = -O2 -W -g -Wall -std=c++11 -I$(ARUCO_DIR)/src -Isrc/
+# check if on unix ("g++ ...") or on Max ("Apple...")
+CXXVERSION := $(shell g++ --version | head -c 3)
+
+CPPFLAGS = -O2 -W -Wall -std=c++11 -I$(ARUCO_DIR)/src -Isrc/
 LDLIBS = -lopencv_core -lopencv_highgui -lopencv_imgproc -lopencv_calib3d -lopencv_features2d -laruco -L$(ARUCO_DIR)/build/src
 
+ifeq "$(CXXVERSION)" "g++"
+  LDLIBS += -fopenmp
+endif
+
 SRC = src/calibration.cpp src/calibrateWithSettings.cpp
-OBJ = build/calibration.o build/calibrateWithSettings.o
-BIN = build/calibrateWithSettings
-# LIB = build/calibrationLib.a
+BIN = build/calibrateWithSettings utils/createUniqueMarkermaps
 
-all: build/calibrateWithSettings
+all: build/calibrateWithSettings utils/createUniqueMarkermaps
 
-build/calibration.o: src/calibration.cpp src/calibration.h
-	$(CXX) $(CPPFLAGS) -c -o $@ $<
+build:
+	mkdir -p build
 
-build/calibrateWithSettings.o: src/calibrateWithSettings.cpp src/calibration.h
-	$(CXX) $(CPPFLAGS) -c src/calibrateWithSettings.cpp -o build/calibrateWithSettings.o
+build/calibrateWithSettings: src/calibration.cpp src/calibrateWithSettings.cpp src/calibration.h build
+	$(CXX) $(CPPFLAGS) -o $@ src/calibration.cpp src/calibrateWithSettings.cpp $(LDLIBS)
 
-build/calibrateWithSettings: build/calibration.o build/calibrateWithSettings.o
-	$(CXX) $(LDLIBS) build/calibration.o build/calibrateWithSettings.o -o build/calibrateWithSettings
+utils/createUniqueMarkermaps: utils/createUniqueMarkermaps.cpp
+	$(CXX) $(CPPFLAGS) -o $@ $< $(LDLIBS)
 
 clean:
-	rm -f $(OBJ) $(BIN)
-
-# calibrationLib.a: build/calibration.o
-# 	ar -r build/calibrationLib.a build/calibration.o
+	rm -f $(BIN)
