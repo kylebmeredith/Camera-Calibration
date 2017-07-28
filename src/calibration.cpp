@@ -107,6 +107,7 @@ public:
                   << "Show_UndistortedImages" <<  showUndistorted
                   << "Show_RectifiedImages" <<  showRectified
                   << "Show_ArucoMarkerCoordinates" << showArucoCoords
+                  << "Wait_NextDetectedImage" << wait
 
                   << "LivePreviewCameraID" <<  cameraIDInput
            << "}";
@@ -136,8 +137,9 @@ public:
         node["Calibrate_FixPrincipalPointAtTheCenter"] >> fixPrincipalPoint;
 
         node["Show_UndistortedImages"] >> showUndistorted;
-        node["Show_UndistortedImages"] >> showRectified;
+        node["Show_RectifiedImages"] >> showRectified;
         node["Show_ArucoMarkerCoordinates"] >> showArucoCoords;
+        node["Wait_NextDetectedImage"] >> wait;
 
         node["LivePreviewCameraID"] >> cameraIDInput;
         interprate();
@@ -317,24 +319,10 @@ public:
         return true;
     }
 
-    static bool fileCheck( const string& filename, FileStorage fs, const char * var)
-    {
-        if( !fs.isOpened() ) {
-            if ( !filename.compare("0") )    // Intentional lack of input if it = "0"
-                return false;
-            else {                           // Unintentional invalid input
-                printf("Invalid %s: %s\n", var, filename.c_str());
-                return false;
-            }
-        } else {
-            return true;
-        }
-    }
-
     void saveIntrinsics(intrinsicCalibration &inCal)
     {
         FileStorage fs( intrinsicOutput, FileStorage::WRITE );
-        if (!fileCheck( intrinsicOutput, fs, "intrinsic output"))
+        if (intrinsicOutput.compare("0") == 0)
             return;
 
         time_t tm;
@@ -386,7 +374,7 @@ public:
     void saveExtrinsics(stereoCalibration &sterCal)
     {
         FileStorage fs( extrinsicOutput, FileStorage::WRITE );
-        if (!fileCheck(extrinsicOutput, fs, "extrinsic output"))
+        if (intrinsicOutput.compare("0") == 0)
             return;
 
         time_t tm;
@@ -456,6 +444,7 @@ public:
     bool showUndistorted;           // Show undistorted images after intrinsic calibration
     bool showRectified;           // Show rectified images after stereo calibration
     bool showArucoCoords;           // If false, IDs will be printed instead
+    bool wait;                      // Wait until a key is pressed to show the next detected image
 
 //-----------------------------Program variables------------------------------//
     int nImages;
@@ -633,6 +622,40 @@ void getSharedPoints(intrinsicCalibration &inCal, intrinsicCalibration &inCal2)
     }
 }
 
+void drawMarker(Settings s, Marker &marker, Mat &img, Scalar color, int lineWidth, cv::Point3f printPoint, int corner) {
+    // Draw a rectangle around the marker
+    // (marker)[x] is coordinate of corner on image
+    cv::line(img, (marker)[0], (marker)[1], color, lineWidth, CV_AA);
+    cv::line(img, (marker)[1], (marker)[2], color, lineWidth, CV_AA);
+    cv::line(img, (marker)[2], (marker)[3], color, lineWidth, CV_AA);
+    cv::line(img, (marker)[3], (marker)[0], color, lineWidth, CV_AA);
+
+    auto p2=Point2f(lineWidth, lineWidth);
+    cv::rectangle(img, (marker)[corner] - p2, (marker)[corner] + p2,  Scalar(255 - color[0], 255 - color[1], 255 - color[2], 255), lineWidth, CV_AA);
+
+    // Determine the center point
+    Point cent(0, 0);
+    for (int i = 0; i < 4; i++) {
+        cent.x += (marker)[i].x;
+        cent.y += (marker)[i].y;
+    }
+    cent.x /= 4.;
+    cent.y /= 4.;
+
+    if (s.showArucoCoords) {        // draw the input printPoint, which is the marker coordinate
+        cv::rectangle(img, (marker)[corner] - p2, (marker)[corner] + p2,  Scalar(255 - color[0], 255 - color[1], 255 - color[2], 255), lineWidth, CV_AA);
+
+        char p[100];
+        sprintf(p, "(%d,%d,%d)", (int)printPoint.x, (int)printPoint.y, (int)printPoint.z);
+        putText(img, p, cent, FONT_HERSHEY_SIMPLEX, .5f, Scalar(255 - color[0], 255 - color[1], 255 - color[2], 255), 2);
+    }
+    else {                          // draw the ID number
+        char cad[100];
+        sprintf(cad, "id=%d", marker.id);
+        putText(img, cad, cent, FONT_HERSHEY_SIMPLEX,  std::max(0.5f,float(lineWidth)*0.3f), Scalar(255 - color[0], 255 - color[1], 255 - color[2], 255), std::max(lineWidth,2));
+    }
+}
+
 void drawArucoMarkers(Settings s, Mat &img, vector<Point3f> &objectPointsBuf,
                       vector<Marker> detectedMarkers,
                       vector<int> markersFromSet, int index)
@@ -663,8 +686,8 @@ void drawArucoMarkers(Settings s, Mat &img, vector<Point3f> &objectPointsBuf,
     int markerIndex;
     for (int k = 0; k < (int)objectPointsBuf.size()/4; k++) {
         markerIndex = markersFromSet[k];
-        detectedMarkers[markerIndex].draw(img, color, std::max(float(1.f),1.5f*float(img.cols)/1000.f),
-                                          objectPointsBuf[k*4+corner], !s.showArucoCoords, s.showArucoCoords, corner);
+        drawMarker(s, detectedMarkers[markerIndex], img, color, max(float(1.f),1.5f*float(img.cols)/1000.f),
+                   objectPointsBuf[k*4+corner], corner);
     }
     img.copyTo(img);
 }
@@ -757,7 +780,7 @@ void arucoDetect(Settings s, Mat &img, intrinsicCalibration &inCal, int vectorIn
 static void undistortImages(Settings s, intrinsicCalibration &inCal)
 {
     Mat img, Uimg;
-    char imgSave[30];
+    char imgSave[1000];
     for( int i = 0; i < s.nImages; i++ )
     {
         img = s.imageSetup(i);
@@ -777,7 +800,8 @@ static void undistortImages(Settings s, intrinsicCalibration &inCal)
                 break;
         }
     }
-    destroyWindow("Undistorted");
+    // if(s.showUndistorted)
+    //     destroyWindow("Undistorted");
 }
 
 void rectifyImages(Settings s, intrinsicCalibration &inCal,
@@ -798,7 +822,7 @@ void rectifyImages(Settings s, intrinsicCalibration &inCal,
     canvas.create(h, w*2, CV_8UC3);
 
     // buffer for image filename
-    char imgSave[30];
+    char imgSave[1000];
     const char *view;
 
     for( int i = 0; i < s.nImages/2; i++ )
@@ -828,6 +852,7 @@ void rectifyImages(Settings s, intrinsicCalibration &inCal,
         }
         for( int j = 0; j < canvas.rows; j += 16 )
             line(canvas, Point(0, j), Point(canvas.cols, j), Scalar(0, 255, 0), 1, 8);
+
         if (s.showRectified)
         {
             imshow("Rectified", canvas);
@@ -918,7 +943,7 @@ static void undistortCheck(Settings s, Mat &img, bool &undistortPreview)
     }
 }
 
-bool runCalibrationAndSave(Settings s, intrinsicCalibration &inCal, intrinsicCalibration &inCal2)
+void runCalibrationAndSave(Settings s, intrinsicCalibration &inCal, intrinsicCalibration &inCal2)
 {
     bool ok;
     if (s.mode == Settings::STEREO) {         // stereo calibration
@@ -950,7 +975,6 @@ bool runCalibrationAndSave(Settings s, intrinsicCalibration &inCal, intrinsicCal
             s.saveIntrinsics(inCal);
         }
     }
-    return ok;
 }
 
 
@@ -1009,8 +1033,9 @@ int calibrateWithSettings( const string inputSettingsFile )
         // if there is no data, the capture has closed or the photos have run out
         if(!img.data)
         {
-            if((int)inCal.imagePoints.size() > 0)
+            if((int)inCal.imagePoints.size() > 0) {
                 runCalibrationAndSave(s, inCal, inCal2);
+            }
             break;
         }
         s.imageSize = img.size();
@@ -1027,15 +1052,14 @@ int calibrateWithSettings( const string inputSettingsFile )
 
         imshow("Image View", img);
 
-        // char c = waitKey();
-        char c = waitKey(s.capture.isOpened() ? 50 : 100);
+        // If wait setting is true, wait till next key press (waitkey(0)). Otherwise, wait 50 ms
+        char c = (char)waitKey(s.wait ? 0: 50);
 
         if (c == 'u')
             undistortPreview = !undistortPreview;
         else if( (c & 255) == 27 || c == 'q' || c == 'Q' )
             break;
     }
-    cerr << "wat";
     destroyWindow("Image View");
     return 0;
 }

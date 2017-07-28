@@ -4,9 +4,9 @@ Settings:
   #   INTRINSIC  — calculates intrinsics parameters which undistort images
   #   STEREO     — calculates stereo paramaters and rectifies images
   #   PREVIEW    — detects pattern on live feed, previewing quality of calibration
-  Mode: INTRINSIC
+  Mode: STEREO
   #Three supported calibration patterns: CHESSBOARD, ARUCO_SINGLE, ARUCO_BOX
-  Calibration_Pattern: CHESSBOARD
+  Calibration_Pattern: ARUCO_BOX
 
   #Number of inner corners per chessboard row and column
   ChessboardSize_Width: 12
@@ -15,19 +15,20 @@ Settings:
   SquareSize: .025
 
   #Image list path
-  imageList_Filename: "../imageLists/singleChessboardFull.xml"
+  imageList_Filename: "../imageLists/stereoAruco.xml"
   #Marker map config list path
-  arucoConfigList_Filename: "0"
+  arucoConfigList_Filename: "../configLists/boxConfigs.xml"
   #Intrinsic input filename. These intrinsics will be used in both intrinsic and stereo calibration
   #Intrinsic input is required for aruco box calibration. Non planar rigs
   #Leave at "0" to calculate new intrinsics.
-  intrinsicInput_Filename: "0"
+  intrinsicInput_Filename: "../intrinsics/intrinsics2.yml"
 
 
   IntrinsicOutput_Filename: "0"
   UndistortedImages_Path: "0"
   ExtrinsicOutput_Filename: "../extrinsics/testOut.yml"
   RectifiedImages_Path: "0"
+  DetectedImages_Path: "0"
 
   #A string of five digits (0 or 1) that control which distortion coefficients will be fixed
   Calibrate_FixDistCoeffs: "00111"
@@ -36,8 +37,8 @@ Settings:
   Calibrate_AssumeZeroTangentialDistortion: 0
   Calibrate_FixPrincipalPointAtTheCenter: 0
   Show_UndistortedImages: 0
-  Show_RectifiedImages: 0
-  Show_ArucoMarkerCoordinates: 1
+  Show_RectifiedImages: 1
+  Show_ArucoMarkerCoordinates: 0
   Wait_NextDetectedImage: 1
 
   LivePreviewCameraID: "0"

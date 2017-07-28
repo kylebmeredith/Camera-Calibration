@@ -34,6 +34,7 @@
   <Show_UndistortedImages>0</Show_UndistortedImages>
   <Show_RectifiedImages>0</Show_RectifiedImages>
   <Show_ArucoMarkerCoordinates>1</Show_ArucoMarkerCoordinates>
+  <Wait_DetectedImages>
 
   <LivePreviewCameraID>"0"</LivePreviewCameraID>
 
