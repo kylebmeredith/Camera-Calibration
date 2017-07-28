@@ -94,10 +94,11 @@ public:
                   << "intrinsicInput_Filename" <<  intrinsicInputFilename
 
                   << "IntrinsicOutput_Filename" <<  intrinsicOutput
-                  << "UndistortedImages_Path" <<  undistortedPath
-
                   << "ExtrinsicOutput_Filename" <<  extrinsicOutput
+
+                  << "UndistortedImages_Path" <<  undistortedPath
                   << "RectifiedImages_Path" <<  rectifiedPath
+                  << "DetectedImages_Path" <<  detectedPath
 
                   << "Calibrate_FixDistCoeffs" << fixDistCoeffs
                   << "Calibrate_FixAspectRatio" <<  aspectRatio
@@ -130,6 +131,7 @@ public:
 
         node["UndistortedImages_Path"] >> undistortedPath;
         node["RectifiedImages_Path"] >> rectifiedPath;
+        node["DetectedImages_Path"] >> detectedPath;
 
         node["Calibrate_FixDistCoeffs"] >> fixDistCoeffs;
         node["Calibrate_FixAspectRatio"] >> aspectRatio;
@@ -430,6 +432,7 @@ public:
 
     string undistortedPath;    // Path at which to save undistorted images (leave "0" to not save undistorted)
     string rectifiedPath;      // Path at which to save rectified images (leave "0" to not save rectified)
+    string detectedPath;       // Path at which to save images with detected patterns (leave "0" to not save detected)
 
 //-----------------------Intrinsic Calibration settings-----------------------//
     // It is recommended to fix distortion coefficients 3-5 ("00111"). Only 1-2 are needed,
@@ -1014,6 +1017,7 @@ int calibrateWithSettings( const string inputSettingsFile )
 
     int vectorIndex = -1;
     bool undistortPreview = false;
+    char imgSave[1000];
 
     // For each image in the image list
     for(int i = 0;;i++)
@@ -1050,7 +1054,13 @@ int calibrateWithSettings( const string inputSettingsFile )
         if (s.mode == Settings::PREVIEW)
             undistortCheck(s, img, undistortPreview);
 
-        imshow("Image View", img);
+        if(s.detectedPath.compare("0") != 0  &&  s.mode != Settings::PREVIEW)
+        {
+            sprintf(imgSave, "%sdetected_%d.png", s.detectedPath.c_str(), i);
+            imwrite(imgSave, img);
+        }
+
+        imshow("Detected", img);
 
         // If wait setting is true, wait till next key press (waitkey(0)). Otherwise, wait 50 ms
         char c = (char)waitKey(s.wait ? 0: 50);
@@ -1060,6 +1070,6 @@ int calibrateWithSettings( const string inputSettingsFile )
         else if( (c & 255) == 27 || c == 'q' || c == 'Q' )
             break;
     }
-    destroyWindow("Image View");
+    destroyWindow("Detected");
     return 0;
 }

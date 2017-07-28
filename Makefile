@@ -1,7 +1,7 @@
 CXX = g++
-ARUCO_DIR = include/aruco-2.0.19
+ARUCO_DIR = src/aruco-2.0.19
 
-CPPFLAGS = -O2 -W -g -Wall -std=c++11 -I$(ARUCO_DIR)/src -Iinclude/
+CPPFLAGS = -O2 -W -g -Wall -std=c++11 -I$(ARUCO_DIR)/src -Isrc/
 LDLIBS = -lopencv_core -lopencv_highgui -lopencv_imgproc -lopencv_calib3d -lopencv_features2d -laruco -L$(ARUCO_DIR)/build/src
 
 SRC = src/calibration.cpp src/calibrateWithSettings.cpp
@@ -11,10 +11,10 @@ BIN = build/calibrateWithSettings
 
 all: build/calibrateWithSettings
 
-build/calibration.o: src/calibration.cpp include/calibration.h
+build/calibration.o: src/calibration.cpp src/calibration.h
 	$(CXX) $(CPPFLAGS) -c -o $@ $<
 
-build/calibrateWithSettings.o: src/calibrateWithSettings.cpp include/calibration.h
+build/calibrateWithSettings.o: src/calibrateWithSettings.cpp src/calibration.h
 	$(CXX) $(CPPFLAGS) -c src/calibrateWithSettings.cpp -o build/calibrateWithSettings.o
 
 build/calibrateWithSettings: build/calibration.o build/calibrateWithSettings.o

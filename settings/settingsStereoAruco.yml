@@ -25,10 +25,11 @@ Settings:
 
 
   IntrinsicOutput_Filename: "0"
-  UndistortedImages_Path: "0"
   ExtrinsicOutput_Filename: "../extrinsics/testOut.yml"
+
+  UndistortedImages_Path: "0"
   RectifiedImages_Path: "0"
-  DetectedImages_Path: "0"
+  DetectedImages_Path: "../detected/"
 
   #A string of five digits (0 or 1) that control which distortion coefficients will be fixed
   Calibrate_FixDistCoeffs: "00111"
