@@ -323,9 +323,9 @@ public:
 
     void saveIntrinsics(intrinsicCalibration &inCal)
     {
-        FileStorage fs( intrinsicOutput, FileStorage::WRITE );
         if (intrinsicOutput.compare("0") == 0)
             return;
+        FileStorage fs( intrinsicOutput, FileStorage::WRITE );
 
         time_t tm;
         time( &tm );
@@ -375,9 +375,9 @@ public:
 
     void saveExtrinsics(stereoCalibration &sterCal)
     {
-        FileStorage fs( extrinsicOutput, FileStorage::WRITE );
         if (intrinsicOutput.compare("0") == 0)
             return;
+        FileStorage fs( extrinsicOutput, FileStorage::WRITE );
 
         time_t tm;
         time( &tm );
@@ -1054,7 +1054,7 @@ int calibrateWithSettings( const string inputSettingsFile )
         if (s.mode == Settings::PREVIEW)
             undistortCheck(s, img, undistortPreview);
 
-        if(!s.detectedPath.empty() &&  s.mode != Settings::PREVIEW)
+        if(s.detectedPath.compare("0") != 0 &&  s.mode != Settings::PREVIEW)
         {
             sprintf(imgSave, "%sdetected_%d.png", s.detectedPath.c_str(), i);
             imwrite(imgSave, img);

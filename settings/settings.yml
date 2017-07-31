@@ -17,19 +17,18 @@ Settings:
   #Image list path
   imageList_Filename: "../imageLists/singleChessboardFull.xml"
   #Marker map config list path
-  arucoConfigList_Filename: ""
+  arucoConfigList_Filename: "0"
   #Intrinsic input filename. These intrinsics will be used in both intrinsic and stereo calibration
-  #Intrinsic input is required for aruco box calibration. Non planar rigs
+  #Intrinsic input is required for non planar aruco box calibration
   #Leave at "0" to calculate new intrinsics.
-  intrinsicInput_Filename: ""
+  intrinsicInput_Filename: "0"
 
-
-  IntrinsicOutput_Filename: ""
+  IntrinsicOutput_Filename: "0"
   ExtrinsicOutput_Filename: "../extrinsics/testOut.yml"
 
-  UndistortedImages_Path: ""
-  RectifiedImages_Path: ""
-  DetectedImages_Path: ""
+  UndistortedImages_Path: "0"
+  RectifiedImages_Path: "0"
+  DetectedImages_Path: "0"
 
   #A string of five digits (0 or 1) that control which distortion coefficients will be fixed
   Calibrate_FixDistCoeffs: "00111"
@@ -37,9 +36,10 @@ Settings:
   Calibrate_FixAspectRatio: 0       #Use or not setting.   0 - False   Non-Zero - True
   Calibrate_AssumeZeroTangentialDistortion: 0
   Calibrate_FixPrincipalPointAtTheCenter: 0
+
   Show_UndistortedImages: 0
   Show_RectifiedImages: 0
   Show_ArucoMarkerCoordinates: 1
-  Wait_NextDetectedImage: 1
+  Wait_NextDetectedImage: 0
 
   LivePreviewCameraID: "0"
