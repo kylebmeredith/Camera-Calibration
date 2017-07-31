@@ -34,10 +34,13 @@ based on images of a chessboard, single aruco markermap, or aruco box setup
 It also supports a live feed preview of what the program will recognize
 */
 
-#include "opencv2/core/core.hpp"
-#include "opencv2/imgproc/imgproc.hpp"
-#include "opencv2/calib3d/calib3d.hpp"
-#include "opencv2/highgui/highgui.hpp"
+#include <opencv2/core.hpp>
+#include <opencv2/core/utility.hpp>
+#include <opencv2/imgproc.hpp>
+#include <opencv2/calib3d.hpp>
+#include <opencv2/imgcodecs.hpp>
+#include <opencv2/videoio.hpp>
+#include <opencv2/highgui.hpp>
 
 #include <iostream>
 #include <fstream>
@@ -914,8 +917,8 @@ stereoCalibration runStereoCalibration(Settings s, intrinsicCalibration &inCal, 
                inCal.cameraMatrix, inCal.distCoeffs,
                inCal2.cameraMatrix, inCal2.distCoeffs,
                s.imageSize, sterCal.R, sterCal.T, sterCal.E, sterCal.F,
-               TermCriteria(CV_TERMCRIT_ITER+CV_TERMCRIT_EPS, 1000, 1e-10),
-               CV_CALIB_FIX_INTRINSIC);
+               CV_CALIB_FIX_INTRINSIC,
+               TermCriteria(CV_TERMCRIT_ITER+CV_TERMCRIT_EPS, 1000, 1e-10));
 
     printf("Stereo reprojection error = %.4f\n", err);
 
@@ -1013,7 +1016,7 @@ int calibrateWithSettings( const string inputSettingsFile )
     intrinsicCalibration *currentInCal = &inCal;
 
     // CHECK THIS FOR RESOLUTION
-    namedWindow( "Image View", CV_WINDOW_AUTOSIZE );
+    namedWindow( "Detected", CV_WINDOW_AUTOSIZE );
 
     int vectorIndex = -1;
     bool undistortPreview = false;
@@ -1038,6 +1041,7 @@ int calibrateWithSettings( const string inputSettingsFile )
         if(!img.data)
         {
             if((int)inCal.imagePoints.size() > 0) {
+                destroyWindow("Detected");
                 runCalibrationAndSave(s, inCal, inCal2);
             }
             break;
@@ -1070,6 +1074,5 @@ int calibrateWithSettings( const string inputSettingsFile )
         else if( (c & 255) == 27 || c == 'q' || c == 'Q' )
             break;
     }
-    destroyWindow("Detected");
     return 0;
 }

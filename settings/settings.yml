@@ -37,7 +37,7 @@ Settings:
   Calibrate_AssumeZeroTangentialDistortion: 0
   Calibrate_FixPrincipalPointAtTheCenter: 0
 
-  Show_UndistortedImages: 0
+  Show_UndistortedImages: 1
   Show_RectifiedImages: 0
   Show_ArucoMarkerCoordinates: 1
   Wait_NextDetectedImage: 0
