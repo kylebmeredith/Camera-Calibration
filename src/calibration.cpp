@@ -1013,7 +1013,7 @@ int calibrateWithSettings( const string inputSettingsFile )
     intrinsicCalibration *currentInCal = &inCal;
 
     // CHECK THIS FOR RESOLUTION
-    namedWindow( "Image View", CV_WINDOW_AUTOSIZE );
+    namedWindow( "Detected", CV_WINDOW_AUTOSIZE );
 
     int vectorIndex = -1;
     bool undistortPreview = false;
@@ -1038,6 +1038,7 @@ int calibrateWithSettings( const string inputSettingsFile )
         if(!img.data)
         {
             if((int)inCal.imagePoints.size() > 0) {
+                destroyWindow("Detected");
                 runCalibrationAndSave(s, inCal, inCal2);
             }
             break;
@@ -1070,6 +1071,5 @@ int calibrateWithSettings( const string inputSettingsFile )
         else if( (c & 255) == 27 || c == 'q' || c == 'Q' )
             break;
     }
-    destroyWindow("Detected");
     return 0;
 }
