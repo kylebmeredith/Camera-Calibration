@@ -39,57 +39,79 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /usr/local/Cellar/cmake/3.8.2/bin/cmake
+CMAKE_COMMAND = /usr/bin/cmake
 
 # The command to remove a file.
-RM = /usr/local/Cellar/cmake/3.8.2/bin/cmake -E remove -f
+RM = /usr/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19"
+CMAKE_SOURCE_DIR = /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build"
+CMAKE_BINARY_DIR = /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build
 
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target install/local
-install/local: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/usr/local/Cellar/cmake/3.8.2/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local
-
-# Special rule for the target install/local
-install/local/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/usr/local/Cellar/cmake/3.8.2/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local/fast
-
 # Special rule for the target install/strip
 install/strip: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/usr/local/Cellar/cmake/3.8.2/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
 .PHONY : install/strip
 
 # Special rule for the target install/strip
 install/strip/fast: preinstall/fast
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/usr/local/Cellar/cmake/3.8.2/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
 .PHONY : install/strip/fast
+
+# Special rule for the target install/local
+install/local: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local
+
+# Special rule for the target install/local
+install/local/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local/fast
+
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
+	/usr/bin/ccmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : edit_cache
+
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
+
+.PHONY : edit_cache/fast
+
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	/usr/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
+
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
+
+.PHONY : rebuild_cache/fast
 
 # Special rule for the target install
 install: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/local/Cellar/cmake/3.8.2/bin/cmake -P cmake_install.cmake
+	/usr/bin/cmake -P cmake_install.cmake
 .PHONY : install
 
 # Special rule for the target install
 install/fast: preinstall/fast
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/local/Cellar/cmake/3.8.2/bin/cmake -P cmake_install.cmake
+	/usr/bin/cmake -P cmake_install.cmake
 .PHONY : install/fast
 
 # Special rule for the target list_install_components
@@ -102,38 +124,16 @@ list_install_components/fast: list_install_components
 
 .PHONY : list_install_components/fast
 
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/local/Cellar/cmake/3.8.2/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
-
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
-
-.PHONY : rebuild_cache/fast
-
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
-	/usr/local/Cellar/cmake/3.8.2/bin/ccmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : edit_cache
-
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
-
-.PHONY : edit_cache/fast
-
 # The main all target
 all: cmake_check_build_system
-	cd "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build" && $(CMAKE_COMMAND) -E cmake_progress_start "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build/CMakeFiles" "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build/src/CMakeFiles/progress.marks"
-	cd "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build" && $(MAKE) -f CMakeFiles/Makefile2 src/all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build/CMakeFiles" 0
+	cd /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build/CMakeFiles /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build/src/CMakeFiles/progress.marks
+	cd /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build && $(MAKE) -f CMakeFiles/Makefile2 src/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build" && $(MAKE) -f CMakeFiles/Makefile2 src/clean
+	cd /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build && $(MAKE) -f CMakeFiles/Makefile2 src/clean
 .PHONY : clean
 
 # The main clean target
@@ -143,22 +143,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build" && $(MAKE) -f CMakeFiles/Makefile2 src/preinstall
+	cd /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build && $(MAKE) -f CMakeFiles/Makefile2 src/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build" && $(MAKE) -f CMakeFiles/Makefile2 src/preinstall
+	cd /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build && $(MAKE) -f CMakeFiles/Makefile2 src/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build" && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 src/CMakeFiles/aruco.dir/rule:
-	cd "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build" && $(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/aruco.dir/rule
+	cd /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build && $(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/aruco.dir/rule
 .PHONY : src/CMakeFiles/aruco.dir/rule
 
 # Convenience name for target.
@@ -168,7 +168,7 @@ aruco: src/CMakeFiles/aruco.dir/rule
 
 # fast build rule for target.
 aruco/fast:
-	cd "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build" && $(MAKE) -f src/CMakeFiles/aruco.dir/build.make src/CMakeFiles/aruco.dir/build
+	cd /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build && $(MAKE) -f src/CMakeFiles/aruco.dir/build.make src/CMakeFiles/aruco.dir/build
 .PHONY : aruco/fast
 
 ar_omp.o: ar_omp.cpp.o
@@ -177,7 +177,7 @@ ar_omp.o: ar_omp.cpp.o
 
 # target to build an object file
 ar_omp.cpp.o:
-	cd "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build" && $(MAKE) -f src/CMakeFiles/aruco.dir/build.make src/CMakeFiles/aruco.dir/ar_omp.cpp.o
+	cd /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build && $(MAKE) -f src/CMakeFiles/aruco.dir/build.make src/CMakeFiles/aruco.dir/ar_omp.cpp.o
 .PHONY : ar_omp.cpp.o
 
 ar_omp.i: ar_omp.cpp.i
@@ -186,7 +186,7 @@ ar_omp.i: ar_omp.cpp.i
 
 # target to preprocess a source file
 ar_omp.cpp.i:
-	cd "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build" && $(MAKE) -f src/CMakeFiles/aruco.dir/build.make src/CMakeFiles/aruco.dir/ar_omp.cpp.i
+	cd /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build && $(MAKE) -f src/CMakeFiles/aruco.dir/build.make src/CMakeFiles/aruco.dir/ar_omp.cpp.i
 .PHONY : ar_omp.cpp.i
 
 ar_omp.s: ar_omp.cpp.s
@@ -195,7 +195,7 @@ ar_omp.s: ar_omp.cpp.s
 
 # target to generate assembly for a file
 ar_omp.cpp.s:
-	cd "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build" && $(MAKE) -f src/CMakeFiles/aruco.dir/build.make src/CMakeFiles/aruco.dir/ar_omp.cpp.s
+	cd /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build && $(MAKE) -f src/CMakeFiles/aruco.dir/build.make src/CMakeFiles/aruco.dir/ar_omp.cpp.s
 .PHONY : ar_omp.cpp.s
 
 cameraparameters.o: cameraparameters.cpp.o
@@ -204,7 +204,7 @@ cameraparameters.o: cameraparameters.cpp.o
 
 # target to build an object file
 cameraparameters.cpp.o:
-	cd "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build" && $(MAKE) -f src/CMakeFiles/aruco.dir/build.make src/CMakeFiles/aruco.dir/cameraparameters.cpp.o
+	cd /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build && $(MAKE) -f src/CMakeFiles/aruco.dir/build.make src/CMakeFiles/aruco.dir/cameraparameters.cpp.o
 .PHONY : cameraparameters.cpp.o
 
 cameraparameters.i: cameraparameters.cpp.i
@@ -213,7 +213,7 @@ cameraparameters.i: cameraparameters.cpp.i
 
 # target to preprocess a source file
 cameraparameters.cpp.i:
-	cd "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build" && $(MAKE) -f src/CMakeFiles/aruco.dir/build.make src/CMakeFiles/aruco.dir/cameraparameters.cpp.i
+	cd /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build && $(MAKE) -f src/CMakeFiles/aruco.dir/build.make src/CMakeFiles/aruco.dir/cameraparameters.cpp.i
 .PHONY : cameraparameters.cpp.i
 
 cameraparameters.s: cameraparameters.cpp.s
@@ -222,7 +222,7 @@ cameraparameters.s: cameraparameters.cpp.s
 
 # target to generate assembly for a file
 cameraparameters.cpp.s:
-	cd "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build" && $(MAKE) -f src/CMakeFiles/aruco.dir/build.make src/CMakeFiles/aruco.dir/cameraparameters.cpp.s
+	cd /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build && $(MAKE) -f src/CMakeFiles/aruco.dir/build.make src/CMakeFiles/aruco.dir/cameraparameters.cpp.s
 .PHONY : cameraparameters.cpp.s
 
 checkrectcontour.o: checkrectcontour.cpp.o
@@ -231,7 +231,7 @@ checkrectcontour.o: checkrectcontour.cpp.o
 
 # target to build an object file
 checkrectcontour.cpp.o:
-	cd "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build" && $(MAKE) -f src/CMakeFiles/aruco.dir/build.make src/CMakeFiles/aruco.dir/checkrectcontour.cpp.o
+	cd /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build && $(MAKE) -f src/CMakeFiles/aruco.dir/build.make src/CMakeFiles/aruco.dir/checkrectcontour.cpp.o
 .PHONY : checkrectcontour.cpp.o
 
 checkrectcontour.i: checkrectcontour.cpp.i
@@ -240,7 +240,7 @@ checkrectcontour.i: checkrectcontour.cpp.i
 
 # target to preprocess a source file
 checkrectcontour.cpp.i:
-	cd "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build" && $(MAKE) -f src/CMakeFiles/aruco.dir/build.make src/CMakeFiles/aruco.dir/checkrectcontour.cpp.i
+	cd /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build && $(MAKE) -f src/CMakeFiles/aruco.dir/build.make src/CMakeFiles/aruco.dir/checkrectcontour.cpp.i
 .PHONY : checkrectcontour.cpp.i
 
 checkrectcontour.s: checkrectcontour.cpp.s
@@ -249,7 +249,7 @@ checkrectcontour.s: checkrectcontour.cpp.s
 
 # target to generate assembly for a file
 checkrectcontour.cpp.s:
-	cd "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build" && $(MAKE) -f src/CMakeFiles/aruco.dir/build.make src/CMakeFiles/aruco.dir/checkrectcontour.cpp.s
+	cd /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build && $(MAKE) -f src/CMakeFiles/aruco.dir/build.make src/CMakeFiles/aruco.dir/checkrectcontour.cpp.s
 .PHONY : checkrectcontour.cpp.s
 
 cvdrawingutils.o: cvdrawingutils.cpp.o
@@ -258,7 +258,7 @@ cvdrawingutils.o: cvdrawingutils.cpp.o
 
 # target to build an object file
 cvdrawingutils.cpp.o:
-	cd "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build" && $(MAKE) -f src/CMakeFiles/aruco.dir/build.make src/CMakeFiles/aruco.dir/cvdrawingutils.cpp.o
+	cd /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build && $(MAKE) -f src/CMakeFiles/aruco.dir/build.make src/CMakeFiles/aruco.dir/cvdrawingutils.cpp.o
 .PHONY : cvdrawingutils.cpp.o
 
 cvdrawingutils.i: cvdrawingutils.cpp.i
@@ -267,7 +267,7 @@ cvdrawingutils.i: cvdrawingutils.cpp.i
 
 # target to preprocess a source file
 cvdrawingutils.cpp.i:
-	cd "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build" && $(MAKE) -f src/CMakeFiles/aruco.dir/build.make src/CMakeFiles/aruco.dir/cvdrawingutils.cpp.i
+	cd /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build && $(MAKE) -f src/CMakeFiles/aruco.dir/build.make src/CMakeFiles/aruco.dir/cvdrawingutils.cpp.i
 .PHONY : cvdrawingutils.cpp.i
 
 cvdrawingutils.s: cvdrawingutils.cpp.s
@@ -276,7 +276,7 @@ cvdrawingutils.s: cvdrawingutils.cpp.s
 
 # target to generate assembly for a file
 cvdrawingutils.cpp.s:
-	cd "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build" && $(MAKE) -f src/CMakeFiles/aruco.dir/build.make src/CMakeFiles/aruco.dir/cvdrawingutils.cpp.s
+	cd /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build && $(MAKE) -f src/CMakeFiles/aruco.dir/build.make src/CMakeFiles/aruco.dir/cvdrawingutils.cpp.s
 .PHONY : cvdrawingutils.cpp.s
 
 dictionary.o: dictionary.cpp.o
@@ -285,7 +285,7 @@ dictionary.o: dictionary.cpp.o
 
 # target to build an object file
 dictionary.cpp.o:
-	cd "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build" && $(MAKE) -f src/CMakeFiles/aruco.dir/build.make src/CMakeFiles/aruco.dir/dictionary.cpp.o
+	cd /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build && $(MAKE) -f src/CMakeFiles/aruco.dir/build.make src/CMakeFiles/aruco.dir/dictionary.cpp.o
 .PHONY : dictionary.cpp.o
 
 dictionary.i: dictionary.cpp.i
@@ -294,7 +294,7 @@ dictionary.i: dictionary.cpp.i
 
 # target to preprocess a source file
 dictionary.cpp.i:
-	cd "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build" && $(MAKE) -f src/CMakeFiles/aruco.dir/build.make src/CMakeFiles/aruco.dir/dictionary.cpp.i
+	cd /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build && $(MAKE) -f src/CMakeFiles/aruco.dir/build.make src/CMakeFiles/aruco.dir/dictionary.cpp.i
 .PHONY : dictionary.cpp.i
 
 dictionary.s: dictionary.cpp.s
@@ -303,7 +303,7 @@ dictionary.s: dictionary.cpp.s
 
 # target to generate assembly for a file
 dictionary.cpp.s:
-	cd "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build" && $(MAKE) -f src/CMakeFiles/aruco.dir/build.make src/CMakeFiles/aruco.dir/dictionary.cpp.s
+	cd /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build && $(MAKE) -f src/CMakeFiles/aruco.dir/build.make src/CMakeFiles/aruco.dir/dictionary.cpp.s
 .PHONY : dictionary.cpp.s
 
 ippe.o: ippe.cpp.o
@@ -312,7 +312,7 @@ ippe.o: ippe.cpp.o
 
 # target to build an object file
 ippe.cpp.o:
-	cd "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build" && $(MAKE) -f src/CMakeFiles/aruco.dir/build.make src/CMakeFiles/aruco.dir/ippe.cpp.o
+	cd /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build && $(MAKE) -f src/CMakeFiles/aruco.dir/build.make src/CMakeFiles/aruco.dir/ippe.cpp.o
 .PHONY : ippe.cpp.o
 
 ippe.i: ippe.cpp.i
@@ -321,7 +321,7 @@ ippe.i: ippe.cpp.i
 
 # target to preprocess a source file
 ippe.cpp.i:
-	cd "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build" && $(MAKE) -f src/CMakeFiles/aruco.dir/build.make src/CMakeFiles/aruco.dir/ippe.cpp.i
+	cd /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build && $(MAKE) -f src/CMakeFiles/aruco.dir/build.make src/CMakeFiles/aruco.dir/ippe.cpp.i
 .PHONY : ippe.cpp.i
 
 ippe.s: ippe.cpp.s
@@ -330,7 +330,7 @@ ippe.s: ippe.cpp.s
 
 # target to generate assembly for a file
 ippe.cpp.s:
-	cd "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build" && $(MAKE) -f src/CMakeFiles/aruco.dir/build.make src/CMakeFiles/aruco.dir/ippe.cpp.s
+	cd /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build && $(MAKE) -f src/CMakeFiles/aruco.dir/build.make src/CMakeFiles/aruco.dir/ippe.cpp.s
 .PHONY : ippe.cpp.s
 
 marker.o: marker.cpp.o
@@ -339,7 +339,7 @@ marker.o: marker.cpp.o
 
 # target to build an object file
 marker.cpp.o:
-	cd "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build" && $(MAKE) -f src/CMakeFiles/aruco.dir/build.make src/CMakeFiles/aruco.dir/marker.cpp.o
+	cd /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build && $(MAKE) -f src/CMakeFiles/aruco.dir/build.make src/CMakeFiles/aruco.dir/marker.cpp.o
 .PHONY : marker.cpp.o
 
 marker.i: marker.cpp.i
@@ -348,7 +348,7 @@ marker.i: marker.cpp.i
 
 # target to preprocess a source file
 marker.cpp.i:
-	cd "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build" && $(MAKE) -f src/CMakeFiles/aruco.dir/build.make src/CMakeFiles/aruco.dir/marker.cpp.i
+	cd /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build && $(MAKE) -f src/CMakeFiles/aruco.dir/build.make src/CMakeFiles/aruco.dir/marker.cpp.i
 .PHONY : marker.cpp.i
 
 marker.s: marker.cpp.s
@@ -357,7 +357,7 @@ marker.s: marker.cpp.s
 
 # target to generate assembly for a file
 marker.cpp.s:
-	cd "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build" && $(MAKE) -f src/CMakeFiles/aruco.dir/build.make src/CMakeFiles/aruco.dir/marker.cpp.s
+	cd /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build && $(MAKE) -f src/CMakeFiles/aruco.dir/build.make src/CMakeFiles/aruco.dir/marker.cpp.s
 .PHONY : marker.cpp.s
 
 markerdetector.o: markerdetector.cpp.o
@@ -366,7 +366,7 @@ markerdetector.o: markerdetector.cpp.o
 
 # target to build an object file
 markerdetector.cpp.o:
-	cd "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build" && $(MAKE) -f src/CMakeFiles/aruco.dir/build.make src/CMakeFiles/aruco.dir/markerdetector.cpp.o
+	cd /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build && $(MAKE) -f src/CMakeFiles/aruco.dir/build.make src/CMakeFiles/aruco.dir/markerdetector.cpp.o
 .PHONY : markerdetector.cpp.o
 
 markerdetector.i: markerdetector.cpp.i
@@ -375,7 +375,7 @@ markerdetector.i: markerdetector.cpp.i
 
 # target to preprocess a source file
 markerdetector.cpp.i:
-	cd "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build" && $(MAKE) -f src/CMakeFiles/aruco.dir/build.make src/CMakeFiles/aruco.dir/markerdetector.cpp.i
+	cd /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build && $(MAKE) -f src/CMakeFiles/aruco.dir/build.make src/CMakeFiles/aruco.dir/markerdetector.cpp.i
 .PHONY : markerdetector.cpp.i
 
 markerdetector.s: markerdetector.cpp.s
@@ -384,7 +384,7 @@ markerdetector.s: markerdetector.cpp.s
 
 # target to generate assembly for a file
 markerdetector.cpp.s:
-	cd "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build" && $(MAKE) -f src/CMakeFiles/aruco.dir/build.make src/CMakeFiles/aruco.dir/markerdetector.cpp.s
+	cd /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build && $(MAKE) -f src/CMakeFiles/aruco.dir/build.make src/CMakeFiles/aruco.dir/markerdetector.cpp.s
 .PHONY : markerdetector.cpp.s
 
 markerlabeler.o: markerlabeler.cpp.o
@@ -393,7 +393,7 @@ markerlabeler.o: markerlabeler.cpp.o
 
 # target to build an object file
 markerlabeler.cpp.o:
-	cd "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build" && $(MAKE) -f src/CMakeFiles/aruco.dir/build.make src/CMakeFiles/aruco.dir/markerlabeler.cpp.o
+	cd /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build && $(MAKE) -f src/CMakeFiles/aruco.dir/build.make src/CMakeFiles/aruco.dir/markerlabeler.cpp.o
 .PHONY : markerlabeler.cpp.o
 
 markerlabeler.i: markerlabeler.cpp.i
@@ -402,7 +402,7 @@ markerlabeler.i: markerlabeler.cpp.i
 
 # target to preprocess a source file
 markerlabeler.cpp.i:
-	cd "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build" && $(MAKE) -f src/CMakeFiles/aruco.dir/build.make src/CMakeFiles/aruco.dir/markerlabeler.cpp.i
+	cd /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build && $(MAKE) -f src/CMakeFiles/aruco.dir/build.make src/CMakeFiles/aruco.dir/markerlabeler.cpp.i
 .PHONY : markerlabeler.cpp.i
 
 markerlabeler.s: markerlabeler.cpp.s
@@ -411,7 +411,7 @@ markerlabeler.s: markerlabeler.cpp.s
 
 # target to generate assembly for a file
 markerlabeler.cpp.s:
-	cd "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build" && $(MAKE) -f src/CMakeFiles/aruco.dir/build.make src/CMakeFiles/aruco.dir/markerlabeler.cpp.s
+	cd /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build && $(MAKE) -f src/CMakeFiles/aruco.dir/build.make src/CMakeFiles/aruco.dir/markerlabeler.cpp.s
 .PHONY : markerlabeler.cpp.s
 
 markerlabelers/dictionary_based.o: markerlabelers/dictionary_based.cpp.o
@@ -420,7 +420,7 @@ markerlabelers/dictionary_based.o: markerlabelers/dictionary_based.cpp.o
 
 # target to build an object file
 markerlabelers/dictionary_based.cpp.o:
-	cd "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build" && $(MAKE) -f src/CMakeFiles/aruco.dir/build.make src/CMakeFiles/aruco.dir/markerlabelers/dictionary_based.cpp.o
+	cd /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build && $(MAKE) -f src/CMakeFiles/aruco.dir/build.make src/CMakeFiles/aruco.dir/markerlabelers/dictionary_based.cpp.o
 .PHONY : markerlabelers/dictionary_based.cpp.o
 
 markerlabelers/dictionary_based.i: markerlabelers/dictionary_based.cpp.i
@@ -429,7 +429,7 @@ markerlabelers/dictionary_based.i: markerlabelers/dictionary_based.cpp.i
 
 # target to preprocess a source file
 markerlabelers/dictionary_based.cpp.i:
-	cd "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build" && $(MAKE) -f src/CMakeFiles/aruco.dir/build.make src/CMakeFiles/aruco.dir/markerlabelers/dictionary_based.cpp.i
+	cd /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build && $(MAKE) -f src/CMakeFiles/aruco.dir/build.make src/CMakeFiles/aruco.dir/markerlabelers/dictionary_based.cpp.i
 .PHONY : markerlabelers/dictionary_based.cpp.i
 
 markerlabelers/dictionary_based.s: markerlabelers/dictionary_based.cpp.s
@@ -438,7 +438,7 @@ markerlabelers/dictionary_based.s: markerlabelers/dictionary_based.cpp.s
 
 # target to generate assembly for a file
 markerlabelers/dictionary_based.cpp.s:
-	cd "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build" && $(MAKE) -f src/CMakeFiles/aruco.dir/build.make src/CMakeFiles/aruco.dir/markerlabelers/dictionary_based.cpp.s
+	cd /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build && $(MAKE) -f src/CMakeFiles/aruco.dir/build.make src/CMakeFiles/aruco.dir/markerlabelers/dictionary_based.cpp.s
 .PHONY : markerlabelers/dictionary_based.cpp.s
 
 markermap.o: markermap.cpp.o
@@ -447,7 +447,7 @@ markermap.o: markermap.cpp.o
 
 # target to build an object file
 markermap.cpp.o:
-	cd "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build" && $(MAKE) -f src/CMakeFiles/aruco.dir/build.make src/CMakeFiles/aruco.dir/markermap.cpp.o
+	cd /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build && $(MAKE) -f src/CMakeFiles/aruco.dir/build.make src/CMakeFiles/aruco.dir/markermap.cpp.o
 .PHONY : markermap.cpp.o
 
 markermap.i: markermap.cpp.i
@@ -456,7 +456,7 @@ markermap.i: markermap.cpp.i
 
 # target to preprocess a source file
 markermap.cpp.i:
-	cd "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build" && $(MAKE) -f src/CMakeFiles/aruco.dir/build.make src/CMakeFiles/aruco.dir/markermap.cpp.i
+	cd /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build && $(MAKE) -f src/CMakeFiles/aruco.dir/build.make src/CMakeFiles/aruco.dir/markermap.cpp.i
 .PHONY : markermap.cpp.i
 
 markermap.s: markermap.cpp.s
@@ -465,7 +465,7 @@ markermap.s: markermap.cpp.s
 
 # target to generate assembly for a file
 markermap.cpp.s:
-	cd "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build" && $(MAKE) -f src/CMakeFiles/aruco.dir/build.make src/CMakeFiles/aruco.dir/markermap.cpp.s
+	cd /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build && $(MAKE) -f src/CMakeFiles/aruco.dir/build.make src/CMakeFiles/aruco.dir/markermap.cpp.s
 .PHONY : markermap.cpp.s
 
 posetracker.o: posetracker.cpp.o
@@ -474,7 +474,7 @@ posetracker.o: posetracker.cpp.o
 
 # target to build an object file
 posetracker.cpp.o:
-	cd "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build" && $(MAKE) -f src/CMakeFiles/aruco.dir/build.make src/CMakeFiles/aruco.dir/posetracker.cpp.o
+	cd /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build && $(MAKE) -f src/CMakeFiles/aruco.dir/build.make src/CMakeFiles/aruco.dir/posetracker.cpp.o
 .PHONY : posetracker.cpp.o
 
 posetracker.i: posetracker.cpp.i
@@ -483,7 +483,7 @@ posetracker.i: posetracker.cpp.i
 
 # target to preprocess a source file
 posetracker.cpp.i:
-	cd "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build" && $(MAKE) -f src/CMakeFiles/aruco.dir/build.make src/CMakeFiles/aruco.dir/posetracker.cpp.i
+	cd /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build && $(MAKE) -f src/CMakeFiles/aruco.dir/build.make src/CMakeFiles/aruco.dir/posetracker.cpp.i
 .PHONY : posetracker.cpp.i
 
 posetracker.s: posetracker.cpp.s
@@ -492,7 +492,7 @@ posetracker.s: posetracker.cpp.s
 
 # target to generate assembly for a file
 posetracker.cpp.s:
-	cd "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build" && $(MAKE) -f src/CMakeFiles/aruco.dir/build.make src/CMakeFiles/aruco.dir/posetracker.cpp.s
+	cd /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build && $(MAKE) -f src/CMakeFiles/aruco.dir/build.make src/CMakeFiles/aruco.dir/posetracker.cpp.s
 .PHONY : posetracker.cpp.s
 
 # Help Target
@@ -501,13 +501,13 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... install/local"
 	@echo "... install/strip"
-	@echo "... install"
+	@echo "... install/local"
 	@echo "... aruco"
-	@echo "... list_install_components"
-	@echo "... rebuild_cache"
 	@echo "... edit_cache"
+	@echo "... rebuild_cache"
+	@echo "... install"
+	@echo "... list_install_components"
 	@echo "... ar_omp.o"
 	@echo "... ar_omp.i"
 	@echo "... ar_omp.s"
@@ -555,6 +555,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build" && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

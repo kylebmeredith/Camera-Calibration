@@ -34,19 +34,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /usr/local/Cellar/cmake/3.8.2/bin/cmake
+CMAKE_COMMAND = /usr/bin/cmake
 
 # The command to remove a file.
-RM = /usr/local/Cellar/cmake/3.8.2/bin/cmake -E remove -f
+RM = /usr/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19"
+CMAKE_SOURCE_DIR = /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build"
+CMAKE_BINARY_DIR = /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build
 
 # Include any dependencies generated for this target.
 include src/CMakeFiles/aruco.dir/depend.make
@@ -59,16 +59,16 @@ include src/CMakeFiles/aruco.dir/flags.make
 
 src/CMakeFiles/aruco.dir/ar_omp.cpp.o: src/CMakeFiles/aruco.dir/flags.make
 src/CMakeFiles/aruco.dir/ar_omp.cpp.o: ../src/ar_omp.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object src/CMakeFiles/aruco.dir/ar_omp.cpp.o"
-	cd "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build/src" && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/aruco.dir/ar_omp.cpp.o -c "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/src/ar_omp.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object src/CMakeFiles/aruco.dir/ar_omp.cpp.o"
+	cd /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build/src && /usr/lib64/ccache/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/aruco.dir/ar_omp.cpp.o -c /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/src/ar_omp.cpp
 
 src/CMakeFiles/aruco.dir/ar_omp.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/aruco.dir/ar_omp.cpp.i"
-	cd "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build/src" && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/src/ar_omp.cpp" > CMakeFiles/aruco.dir/ar_omp.cpp.i
+	cd /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build/src && /usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/src/ar_omp.cpp > CMakeFiles/aruco.dir/ar_omp.cpp.i
 
 src/CMakeFiles/aruco.dir/ar_omp.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/aruco.dir/ar_omp.cpp.s"
-	cd "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build/src" && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/src/ar_omp.cpp" -o CMakeFiles/aruco.dir/ar_omp.cpp.s
+	cd /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build/src && /usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/src/ar_omp.cpp -o CMakeFiles/aruco.dir/ar_omp.cpp.s
 
 src/CMakeFiles/aruco.dir/ar_omp.cpp.o.requires:
 
@@ -83,16 +83,16 @@ src/CMakeFiles/aruco.dir/ar_omp.cpp.o.provides.build: src/CMakeFiles/aruco.dir/a
 
 src/CMakeFiles/aruco.dir/cameraparameters.cpp.o: src/CMakeFiles/aruco.dir/flags.make
 src/CMakeFiles/aruco.dir/cameraparameters.cpp.o: ../src/cameraparameters.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object src/CMakeFiles/aruco.dir/cameraparameters.cpp.o"
-	cd "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build/src" && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/aruco.dir/cameraparameters.cpp.o -c "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/src/cameraparameters.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object src/CMakeFiles/aruco.dir/cameraparameters.cpp.o"
+	cd /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build/src && /usr/lib64/ccache/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/aruco.dir/cameraparameters.cpp.o -c /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/src/cameraparameters.cpp
 
 src/CMakeFiles/aruco.dir/cameraparameters.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/aruco.dir/cameraparameters.cpp.i"
-	cd "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build/src" && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/src/cameraparameters.cpp" > CMakeFiles/aruco.dir/cameraparameters.cpp.i
+	cd /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build/src && /usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/src/cameraparameters.cpp > CMakeFiles/aruco.dir/cameraparameters.cpp.i
 
 src/CMakeFiles/aruco.dir/cameraparameters.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/aruco.dir/cameraparameters.cpp.s"
-	cd "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build/src" && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/src/cameraparameters.cpp" -o CMakeFiles/aruco.dir/cameraparameters.cpp.s
+	cd /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build/src && /usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/src/cameraparameters.cpp -o CMakeFiles/aruco.dir/cameraparameters.cpp.s
 
 src/CMakeFiles/aruco.dir/cameraparameters.cpp.o.requires:
 
@@ -107,16 +107,16 @@ src/CMakeFiles/aruco.dir/cameraparameters.cpp.o.provides.build: src/CMakeFiles/a
 
 src/CMakeFiles/aruco.dir/checkrectcontour.cpp.o: src/CMakeFiles/aruco.dir/flags.make
 src/CMakeFiles/aruco.dir/checkrectcontour.cpp.o: ../src/checkrectcontour.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object src/CMakeFiles/aruco.dir/checkrectcontour.cpp.o"
-	cd "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build/src" && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/aruco.dir/checkrectcontour.cpp.o -c "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/src/checkrectcontour.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object src/CMakeFiles/aruco.dir/checkrectcontour.cpp.o"
+	cd /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build/src && /usr/lib64/ccache/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/aruco.dir/checkrectcontour.cpp.o -c /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/src/checkrectcontour.cpp
 
 src/CMakeFiles/aruco.dir/checkrectcontour.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/aruco.dir/checkrectcontour.cpp.i"
-	cd "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build/src" && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/src/checkrectcontour.cpp" > CMakeFiles/aruco.dir/checkrectcontour.cpp.i
+	cd /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build/src && /usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/src/checkrectcontour.cpp > CMakeFiles/aruco.dir/checkrectcontour.cpp.i
 
 src/CMakeFiles/aruco.dir/checkrectcontour.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/aruco.dir/checkrectcontour.cpp.s"
-	cd "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build/src" && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/src/checkrectcontour.cpp" -o CMakeFiles/aruco.dir/checkrectcontour.cpp.s
+	cd /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build/src && /usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/src/checkrectcontour.cpp -o CMakeFiles/aruco.dir/checkrectcontour.cpp.s
 
 src/CMakeFiles/aruco.dir/checkrectcontour.cpp.o.requires:
 
@@ -131,16 +131,16 @@ src/CMakeFiles/aruco.dir/checkrectcontour.cpp.o.provides.build: src/CMakeFiles/a
 
 src/CMakeFiles/aruco.dir/cvdrawingutils.cpp.o: src/CMakeFiles/aruco.dir/flags.make
 src/CMakeFiles/aruco.dir/cvdrawingutils.cpp.o: ../src/cvdrawingutils.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object src/CMakeFiles/aruco.dir/cvdrawingutils.cpp.o"
-	cd "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build/src" && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/aruco.dir/cvdrawingutils.cpp.o -c "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/src/cvdrawingutils.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object src/CMakeFiles/aruco.dir/cvdrawingutils.cpp.o"
+	cd /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build/src && /usr/lib64/ccache/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/aruco.dir/cvdrawingutils.cpp.o -c /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/src/cvdrawingutils.cpp
 
 src/CMakeFiles/aruco.dir/cvdrawingutils.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/aruco.dir/cvdrawingutils.cpp.i"
-	cd "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build/src" && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/src/cvdrawingutils.cpp" > CMakeFiles/aruco.dir/cvdrawingutils.cpp.i
+	cd /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build/src && /usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/src/cvdrawingutils.cpp > CMakeFiles/aruco.dir/cvdrawingutils.cpp.i
 
 src/CMakeFiles/aruco.dir/cvdrawingutils.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/aruco.dir/cvdrawingutils.cpp.s"
-	cd "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build/src" && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/src/cvdrawingutils.cpp" -o CMakeFiles/aruco.dir/cvdrawingutils.cpp.s
+	cd /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build/src && /usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/src/cvdrawingutils.cpp -o CMakeFiles/aruco.dir/cvdrawingutils.cpp.s
 
 src/CMakeFiles/aruco.dir/cvdrawingutils.cpp.o.requires:
 
@@ -155,16 +155,16 @@ src/CMakeFiles/aruco.dir/cvdrawingutils.cpp.o.provides.build: src/CMakeFiles/aru
 
 src/CMakeFiles/aruco.dir/dictionary.cpp.o: src/CMakeFiles/aruco.dir/flags.make
 src/CMakeFiles/aruco.dir/dictionary.cpp.o: ../src/dictionary.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object src/CMakeFiles/aruco.dir/dictionary.cpp.o"
-	cd "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build/src" && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/aruco.dir/dictionary.cpp.o -c "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/src/dictionary.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object src/CMakeFiles/aruco.dir/dictionary.cpp.o"
+	cd /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build/src && /usr/lib64/ccache/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/aruco.dir/dictionary.cpp.o -c /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/src/dictionary.cpp
 
 src/CMakeFiles/aruco.dir/dictionary.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/aruco.dir/dictionary.cpp.i"
-	cd "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build/src" && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/src/dictionary.cpp" > CMakeFiles/aruco.dir/dictionary.cpp.i
+	cd /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build/src && /usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/src/dictionary.cpp > CMakeFiles/aruco.dir/dictionary.cpp.i
 
 src/CMakeFiles/aruco.dir/dictionary.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/aruco.dir/dictionary.cpp.s"
-	cd "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build/src" && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/src/dictionary.cpp" -o CMakeFiles/aruco.dir/dictionary.cpp.s
+	cd /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build/src && /usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/src/dictionary.cpp -o CMakeFiles/aruco.dir/dictionary.cpp.s
 
 src/CMakeFiles/aruco.dir/dictionary.cpp.o.requires:
 
@@ -179,16 +179,16 @@ src/CMakeFiles/aruco.dir/dictionary.cpp.o.provides.build: src/CMakeFiles/aruco.d
 
 src/CMakeFiles/aruco.dir/ippe.cpp.o: src/CMakeFiles/aruco.dir/flags.make
 src/CMakeFiles/aruco.dir/ippe.cpp.o: ../src/ippe.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object src/CMakeFiles/aruco.dir/ippe.cpp.o"
-	cd "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build/src" && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/aruco.dir/ippe.cpp.o -c "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/src/ippe.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object src/CMakeFiles/aruco.dir/ippe.cpp.o"
+	cd /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build/src && /usr/lib64/ccache/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/aruco.dir/ippe.cpp.o -c /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/src/ippe.cpp
 
 src/CMakeFiles/aruco.dir/ippe.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/aruco.dir/ippe.cpp.i"
-	cd "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build/src" && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/src/ippe.cpp" > CMakeFiles/aruco.dir/ippe.cpp.i
+	cd /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build/src && /usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/src/ippe.cpp > CMakeFiles/aruco.dir/ippe.cpp.i
 
 src/CMakeFiles/aruco.dir/ippe.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/aruco.dir/ippe.cpp.s"
-	cd "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build/src" && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/src/ippe.cpp" -o CMakeFiles/aruco.dir/ippe.cpp.s
+	cd /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build/src && /usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/src/ippe.cpp -o CMakeFiles/aruco.dir/ippe.cpp.s
 
 src/CMakeFiles/aruco.dir/ippe.cpp.o.requires:
 
@@ -203,16 +203,16 @@ src/CMakeFiles/aruco.dir/ippe.cpp.o.provides.build: src/CMakeFiles/aruco.dir/ipp
 
 src/CMakeFiles/aruco.dir/marker.cpp.o: src/CMakeFiles/aruco.dir/flags.make
 src/CMakeFiles/aruco.dir/marker.cpp.o: ../src/marker.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object src/CMakeFiles/aruco.dir/marker.cpp.o"
-	cd "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build/src" && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/aruco.dir/marker.cpp.o -c "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/src/marker.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object src/CMakeFiles/aruco.dir/marker.cpp.o"
+	cd /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build/src && /usr/lib64/ccache/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/aruco.dir/marker.cpp.o -c /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/src/marker.cpp
 
 src/CMakeFiles/aruco.dir/marker.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/aruco.dir/marker.cpp.i"
-	cd "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build/src" && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/src/marker.cpp" > CMakeFiles/aruco.dir/marker.cpp.i
+	cd /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build/src && /usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/src/marker.cpp > CMakeFiles/aruco.dir/marker.cpp.i
 
 src/CMakeFiles/aruco.dir/marker.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/aruco.dir/marker.cpp.s"
-	cd "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build/src" && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/src/marker.cpp" -o CMakeFiles/aruco.dir/marker.cpp.s
+	cd /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build/src && /usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/src/marker.cpp -o CMakeFiles/aruco.dir/marker.cpp.s
 
 src/CMakeFiles/aruco.dir/marker.cpp.o.requires:
 
@@ -227,16 +227,16 @@ src/CMakeFiles/aruco.dir/marker.cpp.o.provides.build: src/CMakeFiles/aruco.dir/m
 
 src/CMakeFiles/aruco.dir/markerdetector.cpp.o: src/CMakeFiles/aruco.dir/flags.make
 src/CMakeFiles/aruco.dir/markerdetector.cpp.o: ../src/markerdetector.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object src/CMakeFiles/aruco.dir/markerdetector.cpp.o"
-	cd "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build/src" && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/aruco.dir/markerdetector.cpp.o -c "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/src/markerdetector.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object src/CMakeFiles/aruco.dir/markerdetector.cpp.o"
+	cd /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build/src && /usr/lib64/ccache/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/aruco.dir/markerdetector.cpp.o -c /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/src/markerdetector.cpp
 
 src/CMakeFiles/aruco.dir/markerdetector.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/aruco.dir/markerdetector.cpp.i"
-	cd "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build/src" && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/src/markerdetector.cpp" > CMakeFiles/aruco.dir/markerdetector.cpp.i
+	cd /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build/src && /usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/src/markerdetector.cpp > CMakeFiles/aruco.dir/markerdetector.cpp.i
 
 src/CMakeFiles/aruco.dir/markerdetector.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/aruco.dir/markerdetector.cpp.s"
-	cd "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build/src" && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/src/markerdetector.cpp" -o CMakeFiles/aruco.dir/markerdetector.cpp.s
+	cd /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build/src && /usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/src/markerdetector.cpp -o CMakeFiles/aruco.dir/markerdetector.cpp.s
 
 src/CMakeFiles/aruco.dir/markerdetector.cpp.o.requires:
 
@@ -251,16 +251,16 @@ src/CMakeFiles/aruco.dir/markerdetector.cpp.o.provides.build: src/CMakeFiles/aru
 
 src/CMakeFiles/aruco.dir/markerlabeler.cpp.o: src/CMakeFiles/aruco.dir/flags.make
 src/CMakeFiles/aruco.dir/markerlabeler.cpp.o: ../src/markerlabeler.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object src/CMakeFiles/aruco.dir/markerlabeler.cpp.o"
-	cd "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build/src" && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/aruco.dir/markerlabeler.cpp.o -c "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/src/markerlabeler.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object src/CMakeFiles/aruco.dir/markerlabeler.cpp.o"
+	cd /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build/src && /usr/lib64/ccache/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/aruco.dir/markerlabeler.cpp.o -c /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/src/markerlabeler.cpp
 
 src/CMakeFiles/aruco.dir/markerlabeler.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/aruco.dir/markerlabeler.cpp.i"
-	cd "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build/src" && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/src/markerlabeler.cpp" > CMakeFiles/aruco.dir/markerlabeler.cpp.i
+	cd /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build/src && /usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/src/markerlabeler.cpp > CMakeFiles/aruco.dir/markerlabeler.cpp.i
 
 src/CMakeFiles/aruco.dir/markerlabeler.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/aruco.dir/markerlabeler.cpp.s"
-	cd "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build/src" && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/src/markerlabeler.cpp" -o CMakeFiles/aruco.dir/markerlabeler.cpp.s
+	cd /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build/src && /usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/src/markerlabeler.cpp -o CMakeFiles/aruco.dir/markerlabeler.cpp.s
 
 src/CMakeFiles/aruco.dir/markerlabeler.cpp.o.requires:
 
@@ -275,16 +275,16 @@ src/CMakeFiles/aruco.dir/markerlabeler.cpp.o.provides.build: src/CMakeFiles/aruc
 
 src/CMakeFiles/aruco.dir/markermap.cpp.o: src/CMakeFiles/aruco.dir/flags.make
 src/CMakeFiles/aruco.dir/markermap.cpp.o: ../src/markermap.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object src/CMakeFiles/aruco.dir/markermap.cpp.o"
-	cd "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build/src" && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/aruco.dir/markermap.cpp.o -c "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/src/markermap.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object src/CMakeFiles/aruco.dir/markermap.cpp.o"
+	cd /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build/src && /usr/lib64/ccache/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/aruco.dir/markermap.cpp.o -c /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/src/markermap.cpp
 
 src/CMakeFiles/aruco.dir/markermap.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/aruco.dir/markermap.cpp.i"
-	cd "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build/src" && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/src/markermap.cpp" > CMakeFiles/aruco.dir/markermap.cpp.i
+	cd /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build/src && /usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/src/markermap.cpp > CMakeFiles/aruco.dir/markermap.cpp.i
 
 src/CMakeFiles/aruco.dir/markermap.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/aruco.dir/markermap.cpp.s"
-	cd "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build/src" && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/src/markermap.cpp" -o CMakeFiles/aruco.dir/markermap.cpp.s
+	cd /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build/src && /usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/src/markermap.cpp -o CMakeFiles/aruco.dir/markermap.cpp.s
 
 src/CMakeFiles/aruco.dir/markermap.cpp.o.requires:
 
@@ -299,16 +299,16 @@ src/CMakeFiles/aruco.dir/markermap.cpp.o.provides.build: src/CMakeFiles/aruco.di
 
 src/CMakeFiles/aruco.dir/posetracker.cpp.o: src/CMakeFiles/aruco.dir/flags.make
 src/CMakeFiles/aruco.dir/posetracker.cpp.o: ../src/posetracker.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object src/CMakeFiles/aruco.dir/posetracker.cpp.o"
-	cd "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build/src" && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/aruco.dir/posetracker.cpp.o -c "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/src/posetracker.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object src/CMakeFiles/aruco.dir/posetracker.cpp.o"
+	cd /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build/src && /usr/lib64/ccache/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/aruco.dir/posetracker.cpp.o -c /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/src/posetracker.cpp
 
 src/CMakeFiles/aruco.dir/posetracker.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/aruco.dir/posetracker.cpp.i"
-	cd "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build/src" && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/src/posetracker.cpp" > CMakeFiles/aruco.dir/posetracker.cpp.i
+	cd /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build/src && /usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/src/posetracker.cpp > CMakeFiles/aruco.dir/posetracker.cpp.i
 
 src/CMakeFiles/aruco.dir/posetracker.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/aruco.dir/posetracker.cpp.s"
-	cd "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build/src" && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/src/posetracker.cpp" -o CMakeFiles/aruco.dir/posetracker.cpp.s
+	cd /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build/src && /usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/src/posetracker.cpp -o CMakeFiles/aruco.dir/posetracker.cpp.s
 
 src/CMakeFiles/aruco.dir/posetracker.cpp.o.requires:
 
@@ -323,16 +323,16 @@ src/CMakeFiles/aruco.dir/posetracker.cpp.o.provides.build: src/CMakeFiles/aruco.
 
 src/CMakeFiles/aruco.dir/markerlabelers/dictionary_based.cpp.o: src/CMakeFiles/aruco.dir/flags.make
 src/CMakeFiles/aruco.dir/markerlabelers/dictionary_based.cpp.o: ../src/markerlabelers/dictionary_based.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object src/CMakeFiles/aruco.dir/markerlabelers/dictionary_based.cpp.o"
-	cd "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build/src" && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/aruco.dir/markerlabelers/dictionary_based.cpp.o -c "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/src/markerlabelers/dictionary_based.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object src/CMakeFiles/aruco.dir/markerlabelers/dictionary_based.cpp.o"
+	cd /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build/src && /usr/lib64/ccache/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/aruco.dir/markerlabelers/dictionary_based.cpp.o -c /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/src/markerlabelers/dictionary_based.cpp
 
 src/CMakeFiles/aruco.dir/markerlabelers/dictionary_based.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/aruco.dir/markerlabelers/dictionary_based.cpp.i"
-	cd "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build/src" && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/src/markerlabelers/dictionary_based.cpp" > CMakeFiles/aruco.dir/markerlabelers/dictionary_based.cpp.i
+	cd /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build/src && /usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/src/markerlabelers/dictionary_based.cpp > CMakeFiles/aruco.dir/markerlabelers/dictionary_based.cpp.i
 
 src/CMakeFiles/aruco.dir/markerlabelers/dictionary_based.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/aruco.dir/markerlabelers/dictionary_based.cpp.s"
-	cd "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build/src" && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/src/markerlabelers/dictionary_based.cpp" -o CMakeFiles/aruco.dir/markerlabelers/dictionary_based.cpp.s
+	cd /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build/src && /usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/src/markerlabelers/dictionary_based.cpp -o CMakeFiles/aruco.dir/markerlabelers/dictionary_based.cpp.s
 
 src/CMakeFiles/aruco.dir/markerlabelers/dictionary_based.cpp.o.requires:
 
@@ -377,9 +377,9 @@ src/libaruco.a: src/CMakeFiles/aruco.dir/posetracker.cpp.o
 src/libaruco.a: src/CMakeFiles/aruco.dir/markerlabelers/dictionary_based.cpp.o
 src/libaruco.a: src/CMakeFiles/aruco.dir/build.make
 src/libaruco.a: src/CMakeFiles/aruco.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_13) "Linking CXX static library libaruco.a"
-	cd "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build/src" && $(CMAKE_COMMAND) -P CMakeFiles/aruco.dir/cmake_clean_target.cmake
-	cd "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build/src" && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/aruco.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Linking CXX static library libaruco.a"
+	cd /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build/src && $(CMAKE_COMMAND) -P CMakeFiles/aruco.dir/cmake_clean_target.cmake
+	cd /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build/src && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/aruco.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 src/CMakeFiles/aruco.dir/build: src/libaruco.a
@@ -402,10 +402,10 @@ src/CMakeFiles/aruco.dir/requires: src/CMakeFiles/aruco.dir/markerlabelers/dicti
 .PHONY : src/CMakeFiles/aruco.dir/requires
 
 src/CMakeFiles/aruco.dir/clean:
-	cd "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build/src" && $(CMAKE_COMMAND) -P CMakeFiles/aruco.dir/cmake_clean.cmake
+	cd /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build/src && $(CMAKE_COMMAND) -P CMakeFiles/aruco.dir/cmake_clean.cmake
 .PHONY : src/CMakeFiles/aruco.dir/clean
 
 src/CMakeFiles/aruco.dir/depend:
-	cd "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19" "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/src" "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build" "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build/src" "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build/src/CMakeFiles/aruco.dir/DependInfo.cmake" --color=$(COLOR)
+	cd /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19 /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/src /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build/src /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build/src/CMakeFiles/aruco.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : src/CMakeFiles/aruco.dir/depend
 

@@ -4,31 +4,29 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/src/ar_omp.cpp" "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build/src/CMakeFiles/aruco.dir/ar_omp.cpp.o"
-  "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/src/cameraparameters.cpp" "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build/src/CMakeFiles/aruco.dir/cameraparameters.cpp.o"
-  "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/src/checkrectcontour.cpp" "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build/src/CMakeFiles/aruco.dir/checkrectcontour.cpp.o"
-  "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/src/cvdrawingutils.cpp" "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build/src/CMakeFiles/aruco.dir/cvdrawingutils.cpp.o"
-  "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/src/dictionary.cpp" "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build/src/CMakeFiles/aruco.dir/dictionary.cpp.o"
-  "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/src/ippe.cpp" "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build/src/CMakeFiles/aruco.dir/ippe.cpp.o"
-  "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/src/marker.cpp" "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build/src/CMakeFiles/aruco.dir/marker.cpp.o"
-  "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/src/markerdetector.cpp" "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build/src/CMakeFiles/aruco.dir/markerdetector.cpp.o"
-  "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/src/markerlabeler.cpp" "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build/src/CMakeFiles/aruco.dir/markerlabeler.cpp.o"
-  "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/src/markerlabelers/dictionary_based.cpp" "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build/src/CMakeFiles/aruco.dir/markerlabelers/dictionary_based.cpp.o"
-  "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/src/markermap.cpp" "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build/src/CMakeFiles/aruco.dir/markermap.cpp.o"
-  "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/src/posetracker.cpp" "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build/src/CMakeFiles/aruco.dir/posetracker.cpp.o"
+  "/home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/src/ar_omp.cpp" "/home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build/src/CMakeFiles/aruco.dir/ar_omp.cpp.o"
+  "/home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/src/cameraparameters.cpp" "/home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build/src/CMakeFiles/aruco.dir/cameraparameters.cpp.o"
+  "/home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/src/checkrectcontour.cpp" "/home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build/src/CMakeFiles/aruco.dir/checkrectcontour.cpp.o"
+  "/home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/src/cvdrawingutils.cpp" "/home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build/src/CMakeFiles/aruco.dir/cvdrawingutils.cpp.o"
+  "/home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/src/dictionary.cpp" "/home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build/src/CMakeFiles/aruco.dir/dictionary.cpp.o"
+  "/home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/src/ippe.cpp" "/home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build/src/CMakeFiles/aruco.dir/ippe.cpp.o"
+  "/home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/src/marker.cpp" "/home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build/src/CMakeFiles/aruco.dir/marker.cpp.o"
+  "/home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/src/markerdetector.cpp" "/home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build/src/CMakeFiles/aruco.dir/markerdetector.cpp.o"
+  "/home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/src/markerlabeler.cpp" "/home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build/src/CMakeFiles/aruco.dir/markerlabeler.cpp.o"
+  "/home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/src/markerlabelers/dictionary_based.cpp" "/home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build/src/CMakeFiles/aruco.dir/markerlabelers/dictionary_based.cpp.o"
+  "/home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/src/markermap.cpp" "/home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build/src/CMakeFiles/aruco.dir/markermap.cpp.o"
+  "/home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/src/posetracker.cpp" "/home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build/src/CMakeFiles/aruco.dir/posetracker.cpp.o"
   )
-set(CMAKE_CXX_COMPILER_ID "Clang")
+set(CMAKE_CXX_COMPILER_ID "GNU")
 
 # Preprocessor definitions for this target.
 set(CMAKE_TARGET_DEFINITIONS_CXX
-  "DOUBLE_PRECISION_PNP"
+  "USE_OMP"
   )
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
-  "/usr/local/include/opencv"
-  "/usr/local/include"
-  "../3rdparty/eigen3"
+  "/usr/include/opencv"
   "../src/."
   "src"
   )

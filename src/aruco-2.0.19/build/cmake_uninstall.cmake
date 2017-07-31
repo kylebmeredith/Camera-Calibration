@@ -2,17 +2,17 @@
 # File that provides "make uninstall" target
 #  We use the file 'install_manifest.txt'
 # -----------------------------------------------
-IF(NOT EXISTS "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build/install_manifest.txt")
-  MESSAGE(FATAL_ERROR "Cannot find install manifest: \"/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build/install_manifest.txt\"")
-ENDIF(NOT EXISTS "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build/install_manifest.txt")
+IF(NOT EXISTS "/home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build/install_manifest.txt")
+  MESSAGE(FATAL_ERROR "Cannot find install manifest: \"/home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build/install_manifest.txt\"")
+ENDIF(NOT EXISTS "/home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build/install_manifest.txt")
 
-FILE(READ "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build/install_manifest.txt" files)
+FILE(READ "/home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build/install_manifest.txt" files)
 STRING(REGEX REPLACE "\n" ";" files "${files}")
 FOREACH(file ${files})
   MESSAGE(STATUS "Uninstalling \"$ENV{DESTDIR}${file}\"")
 #  IF(EXISTS "$ENV{DESTDIR}${file}")
 #    EXEC_PROGRAM(
-#      "/usr/local/Cellar/cmake/3.8.2/bin/cmake" ARGS "-E remove \"$ENV{DESTDIR}${file}\""
+#      "/usr/bin/cmake" ARGS "-E remove \"$ENV{DESTDIR}${file}\""
 #      OUTPUT_VARIABLE rm_out
 #      RETURN_VALUE rm_retval
 #      )

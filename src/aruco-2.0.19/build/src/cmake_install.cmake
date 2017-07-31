@@ -1,4 +1,4 @@
-# Install script for directory: /Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/src
+# Install script for directory: /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/src
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -27,31 +27,32 @@ if(NOT CMAKE_INSTALL_COMPONENT)
   endif()
 endif()
 
+# Install shared libraries without execute permission?
+if(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
+  set(CMAKE_INSTALL_SO_NO_EXE "0")
+endif()
+
 if("${CMAKE_INSTALL_COMPONENT}" STREQUAL "main" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build/src/libaruco.a")
-  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libaruco.a" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libaruco.a")
-    execute_process(COMMAND "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ranlib" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libaruco.a")
-  endif()
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "/home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build/src/libaruco.a")
 endif()
 
 if("${CMAKE_INSTALL_COMPONENT}" STREQUAL "main" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/aruco" TYPE FILE FILES
-    "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/src/ar_omp.h"
-    "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/src/aruco.h"
-    "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/src/cameraparameters.h"
-    "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/src/checkrectcontour.h"
-    "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/src/cvdrawingutils.h"
-    "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/src/dictionary.h"
-    "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/src/exports.h"
-    "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/src/ippe.h"
-    "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/src/levmarq.h"
-    "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/src/marker.h"
-    "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/src/markerdetector.h"
-    "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/src/markerlabeler.h"
-    "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/src/markermap.h"
-    "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/src/posetracker.h"
-    "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/src/markerlabelers/dictionary_based.h"
+    "/home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/src/ar_omp.h"
+    "/home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/src/aruco.h"
+    "/home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/src/cameraparameters.h"
+    "/home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/src/checkrectcontour.h"
+    "/home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/src/cvdrawingutils.h"
+    "/home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/src/dictionary.h"
+    "/home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/src/exports.h"
+    "/home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/src/ippe.h"
+    "/home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/src/levmarq.h"
+    "/home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/src/marker.h"
+    "/home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/src/markerdetector.h"
+    "/home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/src/markerlabeler.h"
+    "/home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/src/markermap.h"
+    "/home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/src/posetracker.h"
+    "/home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/src/markerlabelers/dictionary_based.h"
     )
 endif()
 

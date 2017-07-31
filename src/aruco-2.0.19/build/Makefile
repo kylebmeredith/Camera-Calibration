@@ -39,50 +39,51 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /usr/local/Cellar/cmake/3.8.2/bin/cmake
+CMAKE_COMMAND = /usr/bin/cmake
 
 # The command to remove a file.
-RM = /usr/local/Cellar/cmake/3.8.2/bin/cmake -E remove -f
+RM = /usr/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19"
+CMAKE_SOURCE_DIR = /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build"
+CMAKE_BINARY_DIR = /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build
 
 #=============================================================================
 # Targets provided globally by CMake.
 
+# Special rule for the target install/strip
+install/strip: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip
+
+# Special rule for the target install/strip
+install/strip/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip/fast
+
 # Special rule for the target install/local
 install/local: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/usr/local/Cellar/cmake/3.8.2/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
 .PHONY : install/local
 
 # Special rule for the target install/local
 install/local/fast: preinstall/fast
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/usr/local/Cellar/cmake/3.8.2/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
 .PHONY : install/local/fast
-
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/local/Cellar/cmake/3.8.2/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
-
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
-
-.PHONY : rebuild_cache/fast
 
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
-	/usr/local/Cellar/cmake/3.8.2/bin/ccmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/usr/bin/ccmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -90,28 +91,27 @@ edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
 
-# Special rule for the target install/strip
-install/strip: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/usr/local/Cellar/cmake/3.8.2/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	/usr/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
 
-# Special rule for the target install/strip
-install/strip/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/usr/local/Cellar/cmake/3.8.2/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip/fast
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
+
+.PHONY : rebuild_cache/fast
 
 # Special rule for the target install
 install: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/local/Cellar/cmake/3.8.2/bin/cmake -P cmake_install.cmake
+	/usr/bin/cmake -P cmake_install.cmake
 .PHONY : install
 
 # Special rule for the target install
 install/fast: preinstall/fast
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/local/Cellar/cmake/3.8.2/bin/cmake -P cmake_install.cmake
+	/usr/bin/cmake -P cmake_install.cmake
 .PHONY : install/fast
 
 # Special rule for the target list_install_components
@@ -126,9 +126,9 @@ list_install_components/fast: list_install_components
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build/CMakeFiles" "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build/CMakeFiles/progress.marks"
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build/CMakeFiles /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/Kyle/Google Drive/#Summer Research 2017/Code/CameraCalibration/src/aruco-2.0.19/build/CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/kbmeredith/public_html/Summer_Research_2017/Camera-Calibration/src/aruco-2.0.19/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -182,174 +182,20 @@ aruco/fast:
 	$(MAKE) -f src/CMakeFiles/aruco.dir/build.make src/CMakeFiles/aruco.dir/build
 .PHONY : aruco/fast
 
-#=============================================================================
-# Target rules for targets named aruco_print_marker
-
-# Build rule for target.
-aruco_print_marker: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 aruco_print_marker
-.PHONY : aruco_print_marker
-
-# fast build rule for target.
-aruco_print_marker/fast:
-	$(MAKE) -f utils/CMakeFiles/aruco_print_marker.dir/build.make utils/CMakeFiles/aruco_print_marker.dir/build
-.PHONY : aruco_print_marker/fast
-
-#=============================================================================
-# Target rules for targets named aruco_print_dictionary
-
-# Build rule for target.
-aruco_print_dictionary: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 aruco_print_dictionary
-.PHONY : aruco_print_dictionary
-
-# fast build rule for target.
-aruco_print_dictionary/fast:
-	$(MAKE) -f utils/CMakeFiles/aruco_print_dictionary.dir/build.make utils/CMakeFiles/aruco_print_dictionary.dir/build
-.PHONY : aruco_print_dictionary/fast
-
-#=============================================================================
-# Target rules for targets named aruco_tracker
-
-# Build rule for target.
-aruco_tracker: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 aruco_tracker
-.PHONY : aruco_tracker
-
-# fast build rule for target.
-aruco_tracker/fast:
-	$(MAKE) -f utils/CMakeFiles/aruco_tracker.dir/build.make utils/CMakeFiles/aruco_tracker.dir/build
-.PHONY : aruco_tracker/fast
-
-#=============================================================================
-# Target rules for targets named aruco_test
-
-# Build rule for target.
-aruco_test: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 aruco_test
-.PHONY : aruco_test
-
-# fast build rule for target.
-aruco_test/fast:
-	$(MAKE) -f utils/CMakeFiles/aruco_test.dir/build.make utils/CMakeFiles/aruco_test.dir/build
-.PHONY : aruco_test/fast
-
-#=============================================================================
-# Target rules for targets named aruco_simple
-
-# Build rule for target.
-aruco_simple: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 aruco_simple
-.PHONY : aruco_simple
-
-# fast build rule for target.
-aruco_simple/fast:
-	$(MAKE) -f utils/CMakeFiles/aruco_simple.dir/build.make utils/CMakeFiles/aruco_simple.dir/build
-.PHONY : aruco_simple/fast
-
-#=============================================================================
-# Target rules for targets named aruco_markermap_pix2meters
-
-# Build rule for target.
-aruco_markermap_pix2meters: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 aruco_markermap_pix2meters
-.PHONY : aruco_markermap_pix2meters
-
-# fast build rule for target.
-aruco_markermap_pix2meters/fast:
-	$(MAKE) -f utils_markermap/CMakeFiles/aruco_markermap_pix2meters.dir/build.make utils_markermap/CMakeFiles/aruco_markermap_pix2meters.dir/build
-.PHONY : aruco_markermap_pix2meters/fast
-
-#=============================================================================
-# Target rules for targets named aruco_test_markermap
-
-# Build rule for target.
-aruco_test_markermap: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 aruco_test_markermap
-.PHONY : aruco_test_markermap
-
-# fast build rule for target.
-aruco_test_markermap/fast:
-	$(MAKE) -f utils_markermap/CMakeFiles/aruco_test_markermap.dir/build.make utils_markermap/CMakeFiles/aruco_test_markermap.dir/build
-.PHONY : aruco_test_markermap/fast
-
-#=============================================================================
-# Target rules for targets named aruco_simple_markermap
-
-# Build rule for target.
-aruco_simple_markermap: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 aruco_simple_markermap
-.PHONY : aruco_simple_markermap
-
-# fast build rule for target.
-aruco_simple_markermap/fast:
-	$(MAKE) -f utils_markermap/CMakeFiles/aruco_simple_markermap.dir/build.make utils_markermap/CMakeFiles/aruco_simple_markermap.dir/build
-.PHONY : aruco_simple_markermap/fast
-
-#=============================================================================
-# Target rules for targets named aruco_create_markermap
-
-# Build rule for target.
-aruco_create_markermap: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 aruco_create_markermap
-.PHONY : aruco_create_markermap
-
-# fast build rule for target.
-aruco_create_markermap/fast:
-	$(MAKE) -f utils_markermap/CMakeFiles/aruco_create_markermap.dir/build.make utils_markermap/CMakeFiles/aruco_create_markermap.dir/build
-.PHONY : aruco_create_markermap/fast
-
-#=============================================================================
-# Target rules for targets named aruco_calibration_fromimages
-
-# Build rule for target.
-aruco_calibration_fromimages: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 aruco_calibration_fromimages
-.PHONY : aruco_calibration_fromimages
-
-# fast build rule for target.
-aruco_calibration_fromimages/fast:
-	$(MAKE) -f utils_calibration/CMakeFiles/aruco_calibration_fromimages.dir/build.make utils_calibration/CMakeFiles/aruco_calibration_fromimages.dir/build
-.PHONY : aruco_calibration_fromimages/fast
-
-#=============================================================================
-# Target rules for targets named aruco_calibration
-
-# Build rule for target.
-aruco_calibration: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 aruco_calibration
-.PHONY : aruco_calibration
-
-# fast build rule for target.
-aruco_calibration/fast:
-	$(MAKE) -f utils_calibration/CMakeFiles/aruco_calibration.dir/build.make utils_calibration/CMakeFiles/aruco_calibration.dir/build
-.PHONY : aruco_calibration/fast
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... install/local"
-	@echo "... rebuild_cache"
-	@echo "... edit_cache"
 	@echo "... install/strip"
+	@echo "... install/local"
 	@echo "... uninstall"
+	@echo "... edit_cache"
+	@echo "... rebuild_cache"
 	@echo "... install"
 	@echo "... list_install_components"
 	@echo "... aruco"
-	@echo "... aruco_print_marker"
-	@echo "... aruco_print_dictionary"
-	@echo "... aruco_tracker"
-	@echo "... aruco_test"
-	@echo "... aruco_simple"
-	@echo "... aruco_markermap_pix2meters"
-	@echo "... aruco_test_markermap"
-	@echo "... aruco_simple_markermap"
-	@echo "... aruco_create_markermap"
-	@echo "... aruco_calibration_fromimages"
-	@echo "... aruco_calibration"
 .PHONY : help
 
 
