@@ -4,7 +4,7 @@ Settings:
   #   INTRINSIC  — calculates intrinsics parameters and  undistorts images
   #   STEREO     — calculates extrinsic stereo paramaters and rectifies images
   #   PREVIEW    — detects pattern on live feed, previewing detection and undistortion
-  Mode: PREVIEW
+  Mode: STEREO
   #Three supported calibration patterns: CHESSBOARD, ARUCO_SINGLE, ARUCO_BOX
   Calibration_Pattern: ARUCO_BOX
 
@@ -15,7 +15,7 @@ Settings:
   SquareSize: .025
 
   #Filename for image list
-  imageList_Filename: "0"
+  imageList_Filename: "../input/imageLists/stereoArucobox.yml"
   #Filename for aruco config files
   arucoConfigList_Filename: "../input/configLists/boxConfigs.xml"
   #Intrinsic input filename. These intrinsics can be used as an initial estimate
@@ -27,15 +27,15 @@ Settings:
   #File to write results of inrinsic calibration
   IntrinsicOutput_Filename: "0"
   #File to write extrinsics of stereo calibration
-  ExtrinsicOutput_Filename: "0"
+  ExtrinsicOutput_Filename: "../output/extrinsics/exStereoArucobox.yml"
 
   #LEAVE THESE SETTINGS AT "0" TO NOT SAVE IMAGES
   #Path at which to save undistorted images
   UndistortedImages_Path: "0"
   #Path at which to save rectified images
-  RectifiedImages_Path: "0"
+  RectifiedImages_Path: "../output/rectified/stereoArucobox/"
   #Path at which to save images with detected patterns drawn
-  DetectedImages_Path: "0"
+  DetectedImages_Path: "../output/detected/stereoArucobox/"
 
   #A string of five digits (0 or 1) that controls which distortion coefficients
   #among K1-K5 will be fixed (1 = fixed)
@@ -50,7 +50,7 @@ Settings:
   #Show undistorted images after intrinsic calibration
   Show_UndistortedImages: 0
   #Show rectified images after stereo calibration
-  Show_RectifiedImages: 0
+  Show_RectifiedImages: 1
   #Draw each marker with its 3D coordinate. If false, IDs will be printed
   Show_ArucoMarkerCoordinates: 1
   #Wait until a key is pressed to show the next detected image

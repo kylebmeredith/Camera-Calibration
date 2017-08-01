@@ -1,2 +1,4 @@
-images/boxFreehand/
+input/images/boxFreehand/
+input/imageLists/boxFreehand.xml
 build/
+output/undistorted/singleChessboardFull/

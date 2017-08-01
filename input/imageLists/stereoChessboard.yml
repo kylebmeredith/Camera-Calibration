@@ -1,0 +1,12 @@
+%YAML:1.0
+images:
+  - ../input/images/stereoChessboard/left/IMG_00.png
+  - ../input/images/stereoChessboard/right/IMG_00.png
+  - ../input/images/stereoChessboard/left/IMG_01.png
+  - ../input/images/stereoChessboard/right/IMG_01.png
+  - ../input/images/stereoChessboard/left/IMG_02.png
+  - ../input/images/stereoChessboard/right/IMG_02.png
+  - ../input/images/stereoChessboard/left/IMG_03.png
+  - ../input/images/stereoChessboard/right/IMG_03.png
+  - ../input/images/stereoChessboard/left/IMG_04.png
+  - ../input/images/stereoChessboard/right/IMG_04.png

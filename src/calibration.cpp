@@ -170,7 +170,7 @@ public:
                 goodInput = false;
             }
 
-        if (calibboardSize.width <= 0 || boardSize.height <= 0)
+        if (boardSize.width <= 0 || boardSize.height <= 0)
         {
             cerr << "Invalid chessboard size: " << boardSize.width << " " << boardSize.height << endl;
             goodInput = false;
@@ -309,7 +309,7 @@ public:
     {
         FileStorage fs(filename, FileStorage::READ);
         if( !fs.isOpened() ) {
-            if ( !filename.compare("0") )       // Intentional lack of input
+            if ( filename == "0" )       // Intentional lack of input
                 return false;
             else {                              // Unintentional invalid input
                 cerr << "Invalid intrinsic input: " << filename << endl;
@@ -323,7 +323,7 @@ public:
 
     void saveIntrinsics(intrinsicCalibration &inCal)
     {
-        if (intrinsicOutput.compare("0") == 0)
+        if (intrinsicOutput == "0")
             return;
         FileStorage fs( intrinsicOutput, FileStorage::WRITE );
 
@@ -375,10 +375,9 @@ public:
 
     void saveExtrinsics(stereoCalibration &sterCal)
     {
-        if (intrinsicOutput.compare("0") == 0)
+        if (extrinsicOutput == "0")
             return;
         FileStorage fs( extrinsicOutput, FileStorage::WRITE );
-
         time_t tm;
         time( &tm );
         struct tm *t2 = localtime( &tm );
@@ -797,7 +796,7 @@ static void undistortImages(Settings s, intrinsicCalibration &inCal)
         img = s.imageSetup(i);
         undistort(img, Uimg, inCal.cameraMatrix, inCal.distCoeffs);
 
-        if(s.undistortedPath.compare("0") != 0  &&  s.mode != Settings::PREVIEW)
+        if(s.undistortedPath != "0" &&  s.mode != Settings::PREVIEW)
         {
             sprintf(imgSave, "%sundistorted_%d.png", s.undistortedPath.c_str(), i);
             imwrite(imgSave, Uimg);
@@ -845,7 +844,7 @@ void rectifyImages(Settings s, intrinsicCalibration &inCal,
             remap(img, rimg, rmap[k][0], rmap[k][1], CV_INTER_LINEAR);
 
             // if a path for rectified images has been provided, save them to this path
-            if (s.rectifiedPath.compare("0") != 0)
+            if (s.rectifiedPath != "0")
             {
                 view = "left";
                 if (k == 1) view = "right";
@@ -1063,7 +1062,7 @@ int calibrateWithSettings( const string inputSettingsFile )
         if (s.mode == Settings::PREVIEW)
             undistortCheck(s, img, undistortPreview);
 
-        if(s.detectedPath.compare("0") != 0 &&  s.mode != Settings::PREVIEW)
+        if(s.detectedPath != "0" &&  s.mode != Settings::PREVIEW)
         {
             sprintf(imgSave, "%sdetected_%d.png", s.detectedPath.c_str(), i);
             imwrite(imgSave, img);
