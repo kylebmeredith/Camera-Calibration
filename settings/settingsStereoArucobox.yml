@@ -22,7 +22,7 @@ Settings:
   #for intrinsic calibration, as fixed intrinsics for stereo calibration, or to
   #preview undistortion in preview mode
   #Leave at "0" to calculate new intrinsics
-  intrinsicInput_Filename: "../output/intrinsics/intrinsics2.yml"
+  intrinsicInput_Filename: "../output/intrinsics/intrinsics.yml"
 
   #File to write results of inrinsic calibration
   IntrinsicOutput_Filename: "0"
