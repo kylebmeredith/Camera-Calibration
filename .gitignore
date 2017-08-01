@@ -1,15 +1,10 @@
 input/images/boxFreehand/
 input/imageLists/boxFreehand.xml
-
 build/
-
 output/extrinsics/*
-output/intrinsics/intrinsics*
-
 output/undistorted/stereoArucobox/*
 output/rectified/stereoArucobox/*
 output/rectified/stereoChessboard/*
 output/detected/stereoArucobox/*
-
 #Makefile#
 Makefile~
