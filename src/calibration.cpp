@@ -1,34 +1,6 @@
-/*****************************
-Copyright 2011 Rafael Muñoz Salinas. All rights reserved.
-
-Redistribution and use in source and binary forms, with or without modification, are
-permitted provided that the following conditions are met:
-
-   1. Redistributions of source code must retain the above copyright notice, this list of
-      conditions and the following disclaimer.
-
-   2. Redistributions in binary form must reproduce the above copyright notice, this list
-      of conditions and the following disclaimer in the documentation and/or other materials
-      provided with the distribution.
-
-THIS SOFTWARE IS PROVIDED BY Rafael Muñoz Salinas ''AS IS'' AND ANY EXPRESS OR IMPLIED
-WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
-FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL Rafael Muñoz Salinas OR
-CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
-CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
-SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
-ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
-NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
-ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-
-The views and conclusions contained in the software and documentation are those of the
-authors and should not be interpreted as representing official policies, either expressed
-or implied, of Rafael Muñoz Salinas.
-********************************/
 /*
 Kyle Meredith
-
-This program is adapted from calibration.cpp, camera_calibration.cpp (opencv examples)
+This program is adapted from camera_calibration.cpp, camera_calibration.cpp (opencv examples)
 and aruco_calibration_fromimages. Its primary function is to calibrate a camera
 based on images of a chessboard, single aruco markermap, or aruco box setup
 It also supports a live feed preview of what the program will recognize
@@ -48,18 +20,22 @@ It also supports a live feed preview of what the program will recognize
 #include <time.h>
 #include <aruco.h>
 
-#ifndef _CRT_SECURE_NO_WARNINGS
-# define _CRT_SECURE_NO_WARNINGS
-#endif
-
 using namespace cv;
 using namespace aruco;
 using namespace std;
 
+static void help()
+{
+    cout <<  "This is a camera calibration sample." << endl
+         <<  "Usage: camera_calibration [configuration_file -- default ./default.xml]"  << endl
+         <<  "Near the sample file you'll find the configuration file, which has detailed help of "
+             "how to edit it.  It may be any OpenCV supported file format XML/YAML." << endl;
+}
+
 //struct to store parameters for intrinsic calibration
 struct intrinsicCalibration {
-    Mat cameraMatrix, distCoeffs;   //intrinsic matrices
-    vector<Mat> rvecs, tvecs;       //extrinsic rotation and translation vectors
+    Mat cameraMatrix, distCoeffs;   //intrinsic camera matrices
+    vector<Mat> rvecs, tvecs;       //extrinsic rotation and translation vectors for each image
     vector<vector<Point2f> > imagePoints;   //corner points on 2d image
     vector<vector<Point3f> > objectPoints;  //corresponding 3d object points
     vector<float> reprojErrs;   //vector of reprojection errors for each pixel
@@ -69,7 +45,7 @@ struct intrinsicCalibration {
 //struct to store parameters for stereo calibration
 struct stereoCalibration {
     Mat R, T, E, F;         //Extrinsic matrices (rotation, translation, essential, fundamental)
-    Mat R1, R2, P1, P2, Q;  //Rectification parameters ()
+    Mat R1, R2, P1, P2, Q;  //Rectification parameters (rectification transformations, projection matrices, disparity-to-depth mapping matrix)
     Rect validRoi[2];       //Rectangle within the rectified image that contains all valid points
 };
 
