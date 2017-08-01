@@ -1,9 +1,15 @@
 /*
-Kyle Meredith
-This program is adapted from camera_calibration.cpp, camera_calibration.cpp (opencv examples)
-and aruco_calibration_fromimages. Its primary function is to calibrate a camera
-based on images of a chessboard, single aruco markermap, or aruco box setup
-It also supports a live feed preview of what the program will recognize
+Kyle Meredith 2017
+Middlebury College summer research with Daniel Scharstein
+
+This program is adapted from calibration.cpp, camera_calibration.cpp, and stereo_calib.cpp,
+which are example calibration programs provided by opencv. It supports unique
+functionality with the aruco library, including calibration with a 3D aruco box rig.
+
+The program has three modes: intrinsic calibration, stereo calibration, and live
+feed preview. It supports three patterns: chessboard, aruco single, and aruco box.
+
+Read the read me for more information and guidance.
 */
 
 #include "opencv2/core/core.hpp"

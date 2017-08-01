@@ -1,5 +1,7 @@
 
 
+This program can perform two steps of camera calibration: intrinsic calibration,
+whic
 
 Image order for stereo calibration for two views A and B: A B A B A B
 
