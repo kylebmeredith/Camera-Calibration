@@ -4,7 +4,7 @@ input/imageLists/boxFreehand.xml
 build/
 
 output/extrinsics/*
-output/intrinsics/intrinsics*.yml
+output/intrinsics/intrinsics*
 
 output/undistorted/stereoArucobox/*
 output/rectified/stereoArucobox/*
