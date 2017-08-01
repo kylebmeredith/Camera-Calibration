@@ -24,6 +24,7 @@ Read the read me for more information and guidance.
 #include <stdio.h>
 #include <string.h>
 #include <time.h>
+#include <dirent.h>
 #include <aruco.h>
 
 using namespace cv;

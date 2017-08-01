@@ -1,9 +1,0 @@
-CC = g++
-CPPFLAGS = -O2 -W -Wall
-LDLIBS = -lopencv_core -lopencv_highgui -lopencv_imgproc -lopencv_calib3d -lopencv_features2d -laruco
-
-BIN = calibration camera_calibration imagelist_creator readwrite imginfo showimg showvideo smooth canny videoedges imdiff
-all: $(BIN)
-
-clean:
-	rm -f $(BIN) *.o core*
