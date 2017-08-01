@@ -2,10 +2,8 @@
 #define _calibration_H
 #endif
 
-#include "opencv2/core/core.hpp"
-#include "opencv2/imgproc/imgproc.hpp"
-#include "opencv2/calib3d/calib3d.hpp"
-#include "opencv2/highgui/highgui.hpp"
+#include <opencv2/opencv.hpp>
+#include <opencv2/aruco.hpp>
 
 #include <iostream>
 #include <fstream>
@@ -14,7 +12,6 @@
 #include <stdio.h>
 #include <string>
 #include <time.h>
-#include "aruco.h"
 
 using namespace std;
 using namespace cv;

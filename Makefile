@@ -1,11 +1,11 @@
 CXX = g++
-ARUCO_DIR = src/aruco-2.0.19
+# ARUCO_DIR = src/aruco-2.0.19
 
 # check if on unix ("g++ ...") or on Max ("Apple...")
 CXXVERSION := $(shell g++ --version | head -c 3)
 
-CPPFLAGS = -O2 -W -Wall -std=c++11 -I$(ARUCO_DIR)/src -Isrc/
-LDLIBS = -lopencv_core -lopencv_highgui -lopencv_imgproc -lopencv_calib3d -lopencv_imgcodecs -lopencv_videoio -lopencv_features2d -laruco -L$(ARUCO_DIR)/build/src
+CPPFLAGS = -O2 -W -Wall -std=c++11 -Isrc/
+LDLIBS = -lopencv_core -lopencv_highgui -lopencv_imgproc -lopencv_calib3d -lopencv_imgcodecs -lopencv_videoio -lopencv_features2d -lopencv_aruco
 
 ifeq "$(CXXVERSION)" "g++"
   LDLIBS += -fopenmp

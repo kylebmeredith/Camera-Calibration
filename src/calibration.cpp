@@ -30,17 +30,12 @@ Kyle Meredith
 
 This program is adapted from calibration.cpp, camera_calibration.cpp (opencv examples)
 and aruco_calibration_fromimages. Its primary function is to calibrate a camera
-based on images of a chessboard, single aruco markermap, or aruco box setup
+based on images of a chessboard, single aruco aruco::MarkerMap, or aruco box setup
 It also supports a live feed preview of what the program will recognize
 */
 
-#include <opencv2/core.hpp>
-#include <opencv2/core/utility.hpp>
-#include <opencv2/imgproc.hpp>
-#include <opencv2/calib3d.hpp>
-#include <opencv2/imgcodecs.hpp>
-#include <opencv2/videoio.hpp>
-#include <opencv2/highgui.hpp>
+#include <opencv2/opencv.hpp>
+#include <opencv2/aruco.hpp>
 
 #include <iostream>
 #include <fstream>
@@ -49,14 +44,13 @@ It also supports a live feed preview of what the program will recognize
 #include <stdio.h>
 #include <string.h>
 #include <time.h>
-#include <aruco.h>
 
 #ifndef _CRT_SECURE_NO_WARNINGS
 # define _CRT_SECURE_NO_WARNINGS
 #endif
 
 using namespace cv;
-using namespace aruco;
+using namespace cv::aruco;
 using namespace std;
 
 //struct to store parameters for intrinsic calibration
@@ -292,7 +286,7 @@ public:
         return true;
     }
 
-    static bool readConfigList( const string& filename, vector<MarkerMap>& l )
+    static bool readConfigList( const string& filename, vector<aruco::MarkerMap>& l )
     {
         l.resize(0);
         FileStorage fs(filename, FileStorage::READ);
@@ -301,7 +295,7 @@ public:
         FileNode n = fs.getFirstTopLevelNode();
         FileNodeIterator it = n.begin(), it_end = n.end();
         for( ; it != it_end; ++it ) {
-            MarkerMap config;
+            aruco::MarkerMap config;
             config.readFromFile((string)*it);
             l.push_back(config);
         }
@@ -422,7 +416,7 @@ public:
     vector<string> imageList;
     string imageListFilename;
 
-    vector <MarkerMap> configList; // Aruco config files
+    vector <aruco::MarkerMap> configList; // Aruco config files
     string configListFilename;    // Input filename for aruco config files
 
     intrinsicCalibration intrinsicInput; // Struct to store inputted intrinsics
@@ -556,7 +550,7 @@ void calcChessboardCorners(Settings s, vector<Point3f>& objectPointsBuf)
 //given the set of aruco markers detected, determine the corresponding 3d object points
 void calcArucoCorners(vector<Point2f> &imagePointsBuf, vector<Point3f> &objectPointsBuf,
                             const vector<Marker> &markers_detected,
-                            const MarkerMap &map)
+                            const aruco::MarkerMap &map)
 {
     imagePointsBuf.clear();
     objectPointsBuf.clear();
@@ -752,8 +746,8 @@ void arucoDetect(Settings s, Mat &img, intrinsicCalibration &inCal, int vectorIn
 
     //for each config file, detect its markers and draw them
     for(int j=0; j < s.nConfigs; j++) {
-        MarkerMap MarkerMapConfig = s.configList[j];
-        TheMarkerDetector.setDictionary(MarkerMapConfig.getDictionary());
+        aruco::MarkerMap MarkerMapConfig = s.configList[j];
+        TheMarkerDetector.setDictionary(aruco::MarkerMapConfig.getDictionary());
         vector<Marker> detectedMarkers;
         vector<int> markersFromSet;
 
@@ -763,8 +757,8 @@ void arucoDetect(Settings s, Mat &img, intrinsicCalibration &inCal, int vectorIn
 
         // detect the markers using MarkerDetector object
         detectedMarkers = TheMarkerDetector.detect(img);
-        markersFromSet = MarkerMapConfig.getIndices(detectedMarkers);
-        calcArucoCorners(imagePointsBuf,objectPointsBuf,detectedMarkers,MarkerMapConfig);
+        markersFromSet = aruco::MarkerMapConfig.getIndices(detectedMarkers);
+        calcArucoCorners(imagePointsBuf,objectPointsBuf,detectedMarkers,aruco::MarkerMapConfig);
 
         // Convert the object points to int values. This also compensates for box geometry;
         // box plane is based on config's index value j (xy, yz, xz)
@@ -986,6 +980,8 @@ void runCalibrationAndSave(Settings s, intrinsicCalibration &inCal, intrinsicCal
 
 int calibrateWithSettings( const string inputSettingsFile )
 {
+    detectMarkers(img, dictionary, corners, ids, params);
+
     Settings s;
     FileStorage fs(inputSettingsFile, FileStorage::READ); // Read the settings
     if (!fs.isOpened())
