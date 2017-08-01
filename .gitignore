@@ -1,6 +1,8 @@
 input/images/boxFreehand/
 input/imageLists/boxFreehand.xml
 build/
-output/undistorted/singleChessboardFull/
+output/undistorted/*/*
+output/rectified/*/*
+output/detected/*/*
 #Makefile#
 Makefile~
