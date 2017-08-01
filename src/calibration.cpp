@@ -170,7 +170,7 @@ public:
                 goodInput = false;
             }
 
-        if (boardSize.width <= 0 || boardSize.height <= 0)
+        if (calibboardSize.width <= 0 || boardSize.height <= 0)
         {
             cerr << "Invalid chessboard size: " << boardSize.width << " " << boardSize.height << endl;
             goodInput = false;
@@ -269,7 +269,7 @@ public:
             img = imread(imageList[imageIndex], CV_LOAD_IMAGE_COLOR);
 
         // if the image is too big, resize it
-        if (img.cols>1280) resize(img, img, Size(), 0.25, 0.25);
+        if (img.cols>1280) resize(img, img, Size(), 0.5, 0.5);
 
         return img;
     }
@@ -399,7 +399,6 @@ public:
         //                       << "Projection_Matrix_2"  << sterCal.P2
         //                       << "Disparity-to-depth_Mapping_Matrix"  << sterCal.Q;
 
-
         fs << "Rectification_Transformation_1"   << sterCal.R1;
         fs << "Rectification_Transformation_2"   << sterCal.R2;
         fs << "Projection_Matrix_1"  << sterCal.P1;
@@ -409,57 +408,66 @@ public:
 
 public:
 //--------------------------Calibration configuration-------------------------//
+    // Program modes:
+    //    INTRINSIC  — calculates intrinsics parameters and  undistorts images
+    //    STEREO     — calculates extrinsic stereo paramaters and rectifies images
+    //    PREVIEW    — detects pattern on live feed, previewing detection and undistortion
     Mode mode;
-    Pattern calibrationPattern;   // One of the Chessboard, circles, or asymmetric circle pattern
+    Pattern calibrationPattern;   // Three supported calibration patterns: CHESSBOARD, ARUCO_SINGLE, ARUCO_BOX
 
-    Size boardSize;                 // The size of the board -> Number of items by width and height
-    float squareSize;               // The size of a square in your defined unit (point, millimeter,etc).
+    Size boardSize;     // Size of chessboard (number of inner corners per chessboard row and column)
+    float squareSize;   // The size of a square in some user defined metric system (pixel, millimeter, etc.)
 
 //-----------------------------Input settings---------------------------------//
-    vector<string> imageList;
-    string imageListFilename;
+    vector<string> imageList;   // Image list to run calibration
+    string imageListFilename;   // Input filename for image list
 
-    vector <MarkerMap> configList; // Aruco config files
-    string configListFilename;    // Input filename for aruco config files
+    vector <MarkerMap> configList;  // Aruco marker map configs
+    string configListFilename;      // Input filename for aruco config files
 
+    //Intrinsic input can be used as an initial estimate for intrinsic calibration,
+    //as fixed intrinsics for stereo calibration, or to preview undistortion in preview mode
+    //Leave filename at "0" to calculate new intrinsics
     intrinsicCalibration intrinsicInput; // Struct to store inputted intrinsics
-    string intrinsicInputFilename;    // Leave it at 0 to calculate new intrinsics
-    bool useIntrinsicInput;
+    string intrinsicInputFilename;       // Intrinsic input filename
+    bool useIntrinsicInput;              // Boolean to simplify program
 
 //-----------------------------Output settings--------------------------------//
     string intrinsicOutput;    // File to write results of intrinsic calibration
     string extrinsicOutput;    // File to write extrisics of stereo calibration
 
-    string undistortedPath;    // Path at which to save undistorted images (leave "0" to not save undistorted)
-    string rectifiedPath;      // Path at which to save rectified images (leave "0" to not save rectified)
-    string detectedPath;       // Path at which to save images with detected patterns (leave "0" to not save detected)
+    // LEAVE THESE SETTINGS AT "0" TO NOT SAVE IMAGES
+    string undistortedPath;    // Path at which to save undistorted images
+    string rectifiedPath;      // Path at which to save rectified images
+    string detectedPath;       // Path at which to save images with detected patterns
 
 //-----------------------Intrinsic Calibration settings-----------------------//
-    // It is recommended to fix distortion coefficients 3-5 ("00111"). Only 1-2 are needed,
-    // and 3 produces significant distortion in stereo rectification
-    string fixDistCoeffs;           // A string of five digits (0 or 1) that control which distortion coefficients will be fixed
-    float aspectRatio;              // The aspect ratio. If it is non zero, it will be fixed in calibration
-    bool assumeZeroTangentDist;     // Assume zero tangential distortion
-    bool fixPrincipalPoint;         // Fix the principal point at the center
-    int flag;                       // Flag to modify calibration
+    // It is recommended to fix distortion coefficients 3-5 ("00111"). Only 1-2 are needed
+    // in most cases, and 3 produces significant distortion in stereo rectification
+    string fixDistCoeffs;         // A string of five digits (0 or 1) that control which distortion coefficients will be fixed (1 = fixed)
+    float aspectRatio;            // The aspect ratio. If it is non zero, it will be fixed in calibration
+    bool assumeZeroTangentDist;   // Assume zero tangential distortion
+    bool fixPrincipalPoint;       // Fix the principal point at the center
+    int flag;                     // Flag to modify calibration
 
 //--------------------------------UI settings---------------------------------//
-    bool showUndistorted;           // Show undistorted images after intrinsic calibration
-    bool showRectified;           // Show rectified images after stereo calibration
-    bool showArucoCoords;           // If false, IDs will be printed instead
-    bool wait;                      // Wait until a key is pressed to show the next detected image
+    bool showUndistorted;   // Show undistorted images after intrinsic calibration
+    bool showRectified;     // Show rectified images after stereo calibration
+    bool showArucoCoords;   // Draw each marker with its 3D coordinate. If false, IDs will be printed
+    bool wait;              // Wait until a key is pressed to show the next detected image
 
 //-----------------------------Program variables------------------------------//
-    int nImages;
-    Size imageSize;
-    int nConfigs;
+    int nImages;        // Number of images in the image list
+    Size imageSize;     // Size of each image
+    int nConfigs;       // Number of config files in config list
 
 //---------------------------Live Preview settings----------------------------//
-    int cameraID;
-    VideoCapture capture;
+    int cameraID;           //ID for live preview camera. Generally "0" is built in webcam
+    VideoCapture capture;   //Live capture object
 
-    bool goodInput;
+    bool goodInput;         //Tracks input validity
 private:
+    // Input variables only needed to set up settings
     string modeInput;
     string patternInput;
     string cameraIDInput;
