@@ -1,0 +1,10 @@
+%YAML:1.0
+images:
+  - ../input/images/stereoArucoBox/left/close.jpg
+  - ../input/images/stereoArucoBox/right/close.jpg
+
+  - ../input/images/stereoArucoBox/left/lores_fbox.jpg
+  - ../input/images/stereoArucoBox/right/lores_fbox.jpg
+
+  # - ../input/images/stereoArucoBox/left/hires_fbox.jpg
+  # - ../input/images/stereoArucoBox/right/hires_fbox.jpg

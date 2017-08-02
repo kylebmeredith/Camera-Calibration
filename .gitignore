@@ -1,6 +1,7 @@
 input/images/boxFreehand/
 input/imageLists/boxFreehand.xml
+
 build/
+src/aruco-2.0.19/build
+
 output/undistorted/singleChessboardFull
-#Makefile#
-Makefile~

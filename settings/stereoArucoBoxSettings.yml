@@ -15,7 +15,7 @@ Settings:
   SquareSize: .025
 
   #Filename for image list
-  imageList_Filename: "../input/imageLists/stereoArucobox.yml"
+  imageList_Filename: "../input/imageLists/stereoArucoBox.yml"
   #Filename for aruco config files
   arucoConfigList_Filename: "../input/configLists/boxConfigs.xml"
   #Intrinsic input filename. These intrinsics can be used as an initial estimate
@@ -27,7 +27,7 @@ Settings:
   #File to write results of inrinsic calibration
   IntrinsicOutput_Filename: "0"
   #File to write extrinsics of stereo calibration
-  ExtrinsicOutput_Filename: "../output/extrinsics/exStereoArucobox.yml"
+  ExtrinsicOutput_Filename: "../output/extrinsics/arucoBoxExtrinsics.yml"
 
   #LEAVE THESE SETTINGS AT "0" TO NOT SAVE IMAGES
   #Path at which to save undistorted images

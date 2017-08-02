@@ -4,7 +4,8 @@ Middlebury College summer research with Daniel Scharstein
 
 This program is adapted from calibration.cpp, camera_calibration.cpp, and stereo_calib.cpp,
 which are example calibration programs provided by opencv. It supports unique
-functionality with the aruco library, including calibration with a 3D aruco box rig.
+functionality with Rafael Munoz-Salinas' ArUco library, including calibration
+with a 3D ArUco box rig.
 
 The program has three modes: intrinsic calibration, stereo calibration, and live
 feed preview. It supports three patterns: chessboard, aruco single, and aruco box.
@@ -16,6 +17,7 @@ Read the read me for more information and guidance.
 #include "opencv2/imgproc/imgproc.hpp"
 #include "opencv2/calib3d/calib3d.hpp"
 #include "opencv2/highgui/highgui.hpp"
+#include <aruco.h>
 
 #include <iostream>
 #include <fstream>
@@ -25,11 +27,16 @@ Read the read me for more information and guidance.
 #include <string.h>
 #include <time.h>
 #include <dirent.h>
-#include <aruco.h>
 
 using namespace cv;
 using namespace aruco;
 using namespace std;
+
+const char* previewHelp =
+    "Preview functions:\n"
+        "  <ESC>, 'q' - quit the program\n"
+        "  'u' - switch undistortion on/off\n"
+        "  'c' - toggle ArUco marker coordinates/IDs\n";
 
 static void help()
 {
@@ -171,10 +178,14 @@ public:
                 stringstream ss(cameraIDInput);
                 ss >> cameraID;
                 capture.open(cameraID);
-            } else {
+            }
+            if (!capture.isOpened())
+            {
                 cerr << "Invalid camera ID for live preview: " << cameraIDInput << endl;
                 goodInput = false;
             }
+            else
+                printf( "\n%s", previewHelp );
         }
         else if (readStringList(imageListFilename, imageList))
         {
@@ -511,6 +522,18 @@ void printPoints(const intrinsicCalibration inCal)
     }
 }
 
+bool pathCheck(const string& path)
+{
+    DIR* dir = opendir(path.c_str());
+    if (dir)              // If the path is an actual directory
+    {
+        closedir(dir);
+        return true;
+    }
+    else                  // Directory does not exist
+        return false;
+}
+
 
 //-------------------------Calibration functions------------------------------//
 double computeReprojectionErrors(intrinsicCalibration &inCal)
@@ -774,14 +797,25 @@ static void undistortImages(Settings s, intrinsicCalibration &inCal)
 {
     Mat img, Uimg;
     char imgSave[1000];
+
+    bool save = false;
+    if(s.undistortedPath != "0" && s.mode != Settings::PREVIEW)
+    {
+        if( pathCheck(s.undistortedPath) )
+            save = true;
+        else
+            printf("\nUndistorted images could not be saved. Invalid path: %s\n", s.undistortedPath.c_str());
+    }
+
+    namedWindow("Undistorted", CV_WINDOW_AUTOSIZE);
     for( int i = 0; i < s.nImages; i++ )
     {
         img = s.imageSetup(i);
         undistort(img, Uimg, inCal.cameraMatrix, inCal.distCoeffs);
 
-        if(s.undistortedPath != "0" &&  s.mode != Settings::PREVIEW)
+        if(save)
         {
-            sprintf(imgSave, "%sundistorted_%d.png", s.undistortedPath.c_str(), i);
+            sprintf(imgSave, "%sundistorted_%d.jpg", s.undistortedPath.c_str(), i);
             imwrite(imgSave, Uimg);
         }
 
@@ -793,8 +827,7 @@ static void undistortImages(Settings s, intrinsicCalibration &inCal)
                 break;
         }
     }
-    // if(s.showUndistorted)
-    //     destroyWindow("Undistorted");
+    destroyWindow("Undistorted");
 }
 
 void rectifyImages(Settings s, intrinsicCalibration &inCal,
@@ -818,6 +851,16 @@ void rectifyImages(Settings s, intrinsicCalibration &inCal,
     char imgSave[1000];
     const char *view;
 
+    bool save = false;
+    if(s.rectifiedPath != "0")
+    {
+        if( pathCheck(s.undistortedPath) )
+            save = true;
+        else
+            printf("\nRectified images could not be saved. Invalid path: %s\n", s.rectifiedPath.c_str());
+    }
+
+    namedWindow("Rectified", CV_WINDOW_AUTOSIZE);
     for( int i = 0; i < s.nImages/2; i++ )
     {
         for( int k = 0; k < 2; k++ )
@@ -827,11 +870,11 @@ void rectifyImages(Settings s, intrinsicCalibration &inCal,
             remap(img, rimg, rmap[k][0], rmap[k][1], CV_INTER_LINEAR);
 
             // if a path for rectified images has been provided, save them to this path
-            if (s.rectifiedPath != "0")
+            if (save)
             {
                 view = "left";
                 if (k == 1) view = "right";
-                sprintf(imgSave, "%s%s_rect_%d.png", s.rectifiedPath.c_str(), view, i);
+                sprintf(imgSave, "%s%s_rectified_%d.jpg", s.rectifiedPath.c_str(), view, i);
                 imwrite(imgSave, rimg);
             }
 
@@ -907,7 +950,7 @@ stereoCalibration runStereoCalibration(Settings s, intrinsicCalibration &inCal, 
                TermCriteria(CV_TERMCRIT_ITER+CV_TERMCRIT_EPS, 1000, 1e-10),
                CV_CALIB_FIX_INTRINSIC);
 
-    printf("Stereo reprojection error = %.4f\n", err);
+    printf("\nStereo reprojection error = %.4f\n", err);
 
     stereoRectify(inCal.cameraMatrix, inCal.distCoeffs,
                  inCal2.cameraMatrix, inCal2.distCoeffs,
@@ -930,7 +973,7 @@ static void undistortCheck(Settings s, Mat &img, bool &undistortPreview)
             undistort(temp, img, s.intrinsicInput.cameraMatrix,
                       s.intrinsicInput.distCoeffs);
         } else {
-            cerr << "Undistorted preview requires intrinsic input";
+            cerr << "\nUndistorted preview requires intrinsic input.\n";
             undistortPreview = !undistortPreview;
         }
     }
@@ -944,11 +987,11 @@ void runCalibrationAndSave(Settings s, intrinsicCalibration &inCal, intrinsicCal
         {
         ok = runIntrinsicCalibration(s, inCal);
         printf("%s for left. Avg reprojection error = %.4f\n",
-                ok ? "Intrinsic calibration succeeded" : "Intrinsic calibration failed",
+                ok ? "\nIntrinsic calibration succeeded" : "\nIntrinsic calibration failed",
                 inCal.totalAvgErr);
         ok = runIntrinsicCalibration(s, inCal2);
         printf("%s for right. Avg reprojection error = %.4f\n",
-                ok ? "Intrinsic calibration succeeded" : "Intrinsic calibration failed",
+                ok ? "\nIntrinsic calibration succeeded" : "\nIntrinsic calibration failed",
                 inCal2.totalAvgErr);
         } else
             ok = true;
@@ -960,7 +1003,7 @@ void runCalibrationAndSave(Settings s, intrinsicCalibration &inCal, intrinsicCal
     } else {                        // intrinsic calibration
         ok = runIntrinsicCalibration(s, inCal);
         printf("%s. Avg reprojection error = %.4f\n",
-                ok ? "Intrinsic calibration succeeded" : "Intrinsic calibration failed",
+                ok ? "\nIntrinsic calibration succeeded" : "\nIntrinsic calibration failed",
                 inCal.totalAvgErr);
 
         if( ok ) {
@@ -991,8 +1034,9 @@ int calibrateWithSettings( const string inputSettingsFile )
 
     //struct to store calibration parameters
     intrinsicCalibration inCal, inCal2;
-    int size = (s.mode == Settings::STEREO) ? s.nImages/2 : s.nImages;
+    intrinsicCalibration *currentInCal = &inCal;
 
+    int size = (s.mode == Settings::STEREO) ? s.nImages/2 : s.nImages;
     if (s.calibrationPattern != Settings::CHESSBOARD) {
         inCal.imagePoints.resize(size);
         inCal.objectPoints.resize(size);
@@ -1000,15 +1044,20 @@ int calibrateWithSettings( const string inputSettingsFile )
         inCal2.objectPoints.resize(size);
     }
 
-    intrinsicCalibration *currentInCal = &inCal;
-
-    // CHECK THIS FOR RESOLUTION
-    namedWindow( "Detected", CV_WINDOW_AUTOSIZE );
-
     int vectorIndex = -1;
     bool undistortPreview = false;
-    char imgSave[1000];
 
+    char imgSave[1000];
+    bool save = false;
+    if(s.detectedPath != "0" && s.mode != Settings::PREVIEW)
+    {
+        if( pathCheck(s.detectedPath) )
+            save = true;
+        else
+            printf("\nDetected images could not be saved. Invalid path: %s\n", s.detectedPath.c_str());
+    }
+
+    namedWindow("Detected", CV_WINDOW_AUTOSIZE);
     // For each image in the image list
     for(int i = 0;;i++)
     {
@@ -1045,9 +1094,9 @@ int calibrateWithSettings( const string inputSettingsFile )
         if (s.mode == Settings::PREVIEW)
             undistortCheck(s, img, undistortPreview);
 
-        if(s.detectedPath != "0" &&  s.mode != Settings::PREVIEW)
+        if(save)
         {
-            sprintf(imgSave, "%sdetected_%d.png", s.detectedPath.c_str(), i);
+            sprintf(imgSave, "%sdetected_%d.jpg", s.detectedPath.c_str(), i);
             imwrite(imgSave, img);
         }
 
@@ -1058,8 +1107,11 @@ int calibrateWithSettings( const string inputSettingsFile )
 
         if (c == 'u')
             undistortPreview = !undistortPreview;
+        if (c == 'c' && s.mode == Settings::PREVIEW)
+            s.showArucoCoords = !s.showArucoCoords;
         else if( (c & 255) == 27 || c == 'q' || c == 'Q' )
             break;
     }
+    destroyWindow("Detected");
     return 0;
 }
