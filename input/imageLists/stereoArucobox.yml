@@ -1,10 +1,10 @@
 %YAML:1.0
 images:
-  - ../input/images/stereoArucobox/left/close.png
-  - ../input/images/stereoArucobox/right/close.png
+  - ../input/images/stereoArucobox/left/close.jpg
+  - ../input/images/stereoArucobox/right/close.jpg
 
-  - ../input/images/stereoArucobox/left/lores_fbox.png
-  - ../input/images/stereoArucobox/right/lores_fbox.png
+  - ../input/images/stereoArucobox/left/lores_fbox.jpg
+  - ../input/images/stereoArucobox/right/lores_fbox.jpg
 
-  # - ../input/images/stereoArucobox/left/hires_fbox.png
-  # - ../input/images/stereoArucobox/right/hires_fbox.png
+  # - ../input/images/stereoArucobox/left/hires_fbox.jpg
+  # - ../input/images/stereoArucobox/right/hires_fbox.jpg
