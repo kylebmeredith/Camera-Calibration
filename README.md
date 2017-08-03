@@ -25,7 +25,7 @@ by a comprehensive settings class, which is inputted as a YAML or XML file. Thes
 host of UI and output features, such as a live camera preview mode, the ability to save detected,
 undistorted, and rectified images, and the ability to display the 3D coordinates of an ArUco pattern.
 
-(utils/readme/arucobox.png)
+[img](utils/readme/arucobox.png)
 
 This program was developed for a Middlebury College undergraduate summer research project,
 led by professor Daniel Scharstein. Camera calibration will be one component of
@@ -57,7 +57,7 @@ make
 This process might produce warnings about comparison or OpenMP, but these don't matter
 as long as the static library is built. After this library is built, return to the Camera Calibration
 home directory and execute `make`. This will create a build folder with the executable
-calibrateWithSettings, which runs calibration from an inputted settings file. 
+calibrateWithSettings, which runs calibration from an inputted settings file.
 
 ## Functionality
 Image order for stereo calibration for two views A and B: A B A B A B
