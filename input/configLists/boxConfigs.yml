@@ -1,0 +1,10 @@
+%YAML:1.0
+Marker_Size: 250
+Configs:
+  - ../input/configs/config1.yml
+  - ../input/configs/config2.yml
+  - ../input/configs/config3.yml
+Planes:
+  - XZ
+  - YZ
+  - XY

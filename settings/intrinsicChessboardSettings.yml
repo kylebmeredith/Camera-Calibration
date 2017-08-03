@@ -12,6 +12,7 @@ Settings:
   ChessboardSize_Width: 12
   ChessboardSize_Height: 17
   #The size of a square in some user defined metric system (pixel, millimeter, etc.)
+  #This setting will be overwritten by the marker size parameter of a configList
   SquareSize: .025
 
   #Filename for image list

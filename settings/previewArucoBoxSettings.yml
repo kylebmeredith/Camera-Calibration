@@ -17,7 +17,7 @@ Settings:
   #Filename for image list
   imageList_Filename: "0"
   #Filename for aruco config files
-  arucoConfigList_Filename: "../input/configLists/boxConfigs.xml"
+  arucoConfigList_Filename: "../input/configLists/boxConfigs.yml"
   #Intrinsic input filename. These intrinsics can be used as an initial estimate
   #for intrinsic calibration, as fixed intrinsics for stereo calibration, or to
   #preview undistortion in preview mode

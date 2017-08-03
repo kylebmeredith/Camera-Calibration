@@ -35,16 +35,16 @@ using namespace std;
 const char* previewHelp =
     "Preview functions:\n"
         "  <ESC>, 'q' - quit the program\n"
-        "  'u' - switch undistortion on/off\n"
+        "  'u' - toggle undistortion on/off\n"
         "  'c' - toggle ArUco marker coordinates/IDs\n";
 
-static void help()
-{
-    cout <<  "This is a camera calibration sample." << endl
-         <<  "Usage: camera_calibration [configuration_file -- default ./default.xml]"  << endl
-         <<  "Near the sample file you'll find the configuration file, which has detailed help of "
-             "how to edit it.  It may be any OpenCV supported file format XML/YAML." << endl;
-}
+// static void help()
+// {
+//     cout <<  "This is a camera calibration sample." << endl
+//          <<  "Usage: camera_calibration [configuration_file -- default ./default.xml]"  << endl
+//          <<  "Near the sample file you'll find the configuration file, which has detailed help of "
+//              "how to edit it.  It may be any OpenCV supported file format XML/YAML." << endl;
+// }
 
 //struct to store parameters for intrinsic calibration
 struct intrinsicCalibration {
@@ -187,7 +187,7 @@ public:
             else
                 printf( "\n%s", previewHelp );
         }
-        else if (readStringList(imageListFilename, imageList))
+        else if (readImageList(imageListFilename))
         {
             nImages = (int)imageList.size();
             if (mode == STEREO)
@@ -203,7 +203,7 @@ public:
 
         if (calibrationPattern != CHESSBOARD)       //Aruco pattern
         {
-            if (readConfigList(configListFilename, configList)) {
+            if (readConfigList(configListFilename)) {
                 nConfigs = (int)configList.size();
                 if (calibrationPattern == ARUCO_SINGLE && nConfigs != 1)
                 {
@@ -223,7 +223,7 @@ public:
         }
 
         useIntrinsicInput = false;
-        if (readIntrinsicInput(intrinsicInputFilename, intrinsicInput)) {
+        if (readIntrinsicInput(intrinsicInputFilename)) {
             useIntrinsicInput = true;
         }
         else if (calibrationPattern == ARUCO_BOX) {
@@ -268,9 +268,9 @@ public:
         return img;
     }
 
-    static bool readStringList( const string& filename, vector<string>& l )
+    bool readImageList( const string& filename )
     {
-        l.clear();
+        imageList.clear();
         FileStorage fs(filename, FileStorage::READ);
         if( !fs.isOpened() )
             return false;
@@ -279,27 +279,36 @@ public:
             return false;
         FileNodeIterator it = n.begin(), it_end = n.end();
         for( ; it != it_end; ++it )
-            l.push_back((string)*it);
+            imageList.push_back((string)*it);
         return true;
     }
 
-    static bool readConfigList( const string& filename, vector<MarkerMap>& l )
+    bool readConfigList( const string& filename )
     {
-        l.resize(0);
+        configList.resize(0);
         FileStorage fs(filename, FileStorage::READ);
         if( !fs.isOpened() )
             return false;
-        FileNode n = fs.getFirstTopLevelNode();
+
+        fs["Marker_Size"] >> squareSize;
+
+        FileNode n = fs["Configs"];
         FileNodeIterator it = n.begin(), it_end = n.end();
         for( ; it != it_end; ++it ) {
             MarkerMap config;
             config.readFromFile((string)*it);
-            l.push_back(config);
+            configList.push_back(config);
+        }
+
+        n = fs["Planes"];
+        it = n.begin(), it_end = n.end();
+        for( ; it != it_end; ++it ) {
+            planeList.push_back((string)*it);
         }
         return true;
     }
 
-    static bool readIntrinsicInput( const string& filename, intrinsicCalibration& intrinsicInput )
+    bool readIntrinsicInput( const string& filename )
     {
         FileStorage fs(filename, FileStorage::READ);
         if( !fs.isOpened() ) {
@@ -381,22 +390,20 @@ public:
 
         fs << "calibration_pattern" << patternInput;
 
-        fs << "Rotation_Matrix"     << sterCal.R;
-        fs << "Translation_Vector"  << sterCal.T;
-        fs << "Essential_Matrix"    << sterCal.E;
-        fs << "Fundamental_Matrix"  << sterCal.F;
+        fs << "Stereo_Parameters";
+        fs << "{" << "Rotation_Matrix"     << sterCal.R
+                  << "Translation_Vector"  << sterCal.T
+                  << "Essential_Matrix"    << sterCal.E
+                  << "Fundamental_Matrix"  << sterCal.F
+           << "}";
 
-        // fs << "Rectification" << "Rectification_Transformation_1"   << sterCal.R1
-        //                       << "Rectification_Transformation_2"   << sterCal.R2
-        //                       << "Projection_Matrix_1"  << sterCal.P1
-        //                       << "Projection_Matrix_2"  << sterCal.P2
-        //                       << "Disparity-to-depth_Mapping_Matrix"  << sterCal.Q;
-
-        fs << "Rectification_Transformation_1"   << sterCal.R1;
-        fs << "Rectification_Transformation_2"   << sterCal.R2;
-        fs << "Projection_Matrix_1"  << sterCal.P1;
-        fs << "Projection_Matrix_2"  << sterCal.P2;
-        fs << "Disparity-to-depth_Mapping_Matrix"  << sterCal.Q;
+        fs << "Rectification_Parameters";
+        fs << "{" << "Rectification_Transformation_1"       << sterCal.R1
+                  << "Rectification_Transformation_2"       << sterCal.R2
+                  << "Projection_Matrix_1"                  << sterCal.P1
+                  << "Projection_Matrix_2"                  << sterCal.P2
+                  << "Disparity-to-depth_Mapping_Matrix"    << sterCal.Q
+           << "}";
     }
 
 public:
@@ -417,6 +424,7 @@ public:
 
     vector <MarkerMap> configList;  // Aruco marker map configs
     string configListFilename;      // Input filename for aruco config files
+    vector <string> planeList;       // Corresponding 3D planes for each marker map config
 
     //Intrinsic input can be used as an initial estimate for intrinsic calibration,
     //as fixed intrinsics for stereo calibration, or to preview undistortion in preview mode
@@ -586,17 +594,19 @@ void calcArucoCorners(vector<Point2f> &imagePointsBuf, vector<Point3f> &objectPo
     //cout<<inCal.objectPoints.size()/4<<" markers detected"<<endl;
 }
 
-vector<Point3f> getIntPoints(vector<Point3f> &points, int plane){
+vector<Point3f> getIntPoints(Settings s, vector<Point3f> &points, int index){
     vector<Point3f> intPoints;
-    // GENERALIZE THIS
+    string plane = s.planeList(index);
+    int offset =
+
     switch (plane) {
-        case 0:   // XY plane
+        case "XY":
             for(auto p:points) intPoints.push_back(Point3f((p.x+1000)/125, (p.y+1000)/125, 0));
             break;
-        case 1:   // YZ plane
+        case "YZ":
             for(auto p:points) intPoints.push_back(Point3f(0, (p.y+1000)/125, (-p.x+1000)/125));
             break;
-        case 2:   // XZ plane
+        case "XZ":
             for(auto p:points) intPoints.push_back(Point3f((p.x+1000)/125, 0, (-p.y+1000)/125));
             break;
     }
@@ -680,15 +690,16 @@ void drawArucoMarkers(Settings s, Mat &img, vector<Point3f> &objectPointsBuf,
     // each marker's points are stored in a list:
     //    [upper left, upper right, lower right, lower left]
     int corner;
-    switch (index) {
-        case 0:
-            corner = 3;
+    string plane = s.planeList(index);
+    switch (plane) {
+        case "XY":
+            corner = 0;
             break;
-        case 1:
+        case "YZ":
             corner = 2;
             break;
-        case 2:
-            corner = 0;
+        case "XZ":
+            corner = 3;
             break;
         default:
             corner = 3;
@@ -779,7 +790,7 @@ void arucoDetect(Settings s, Mat &img, intrinsicCalibration &inCal, int vectorIn
         // Convert the object points to int values. This also compensates for box geometry;
         // box plane is based on config's index value j (xy, yz, xz)
         // Because of this, our aruco box config list file must be in order 3, 2, 1
-        objectPointsBuf = getIntPoints(objectPointsBuf, j);
+        objectPointsBuf = getIntPoints(s, objectPointsBuf, j);
 
         // add the point buffers to the overall calibration vectors
         if(objectPointsBuf.size()>0 && s.mode != Settings::PREVIEW){
