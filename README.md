@@ -25,7 +25,7 @@ by a comprehensive settings class, which is inputted as a YAML or XML file. Thes
 host of UI and output features, such as a live camera preview mode, the ability to save detected,
 undistorted, and rectified images, and the ability to display the 3D coordinates of an ArUco pattern.
 
-![](utils/readme/arucobox.png =250x)
+![](utils/readme/arucobox.png)
 
 This program was developed for a Middlebury College undergraduate summer research project,
 led by professor Daniel Scharstein. Camera calibration will be one component of
@@ -97,7 +97,7 @@ If you wish to create a pattern that is neither a single map nor a box setup, th
 will require some adaptation.
 
 ### INTRINSIC MODE    
-Intrinsic mode uses OpenCV's [calibrateCamera function](http://docs.opencv.org/2.4/modules/calib3d/doc/camera_calibration_and_3d_reconstruction.html#calibratecamera) to perform intrinsic camera calibration. It requires an imageList with
+Intrinsic mode uses OpenCV's [calibrateCamera function](http://tinyurl.com/y8t9n4bb) to perform intrinsic camera calibration. It requires an imageList with
 images from a single viewpoint ([example set](input/images/intrinsicChessboard/)). It can be run
 with all three calibration patterns, but the ArUco box requires intrinsic input (it will use this
 input as an initial estimate to be optimized). The recommended pipeline is to calculate
@@ -124,7 +124,8 @@ the program will try to save these images to the path. It will print an error if
 not exist (*the path must be created beforehand*).
 
 ### STEREO MODE
-Stereo mode uses OpenCV's [stereoCalibrate function](http://docs.opencv.org/2.4/modules/calib3d/doc/camera_calibration_and_3d_reconstruction.html#double stereoCalibrate(InputArrayOfArrays objectPoints, InputArrayOfArrays imagePoints1, InputArrayOfArrays imagePoints2, InputOutputArray cameraMatrix1, InputOutputArray distCoeffs1, InputOutputArray cameraMatrix2, InputOutputArray distCoeffs2, Size imageSize, OutputArray R, OutputArray T, OutputArray E, OutputArray F, TermCriteria criteria, int flags) to perform extrinsic stereo calibration. It requires an imageList with image pairs of an
+Stereo mode uses OpenCV's [stereoCalibrate function](http://tinyurl.com/zx89lxt)
+to perform extrinsic stereo calibration. It requires an imageList with image pairs of an
 identical scene from two viewpoints ([example set](input/images/stereoChessboard/)). The order
 of image paths within the image list must alternate between viewpoints (left1 right1 left2 right2).
 Stereo calibration can be run with all three patterns. The **ARUCO_BOX** pattern requires intrinsic input
@@ -133,7 +134,7 @@ fixed model of the camera, using the flag CV_CALIB_FIX_INTRINSIC. With the Chess
 patterns, this intrinsic input is optional. If it is left at "0," the program will calculate
 independent intrinsics for each viewpoint and input these into the stereoCalibrate function.
 
-The program plugs these resulting extrinsics into OpenCV's [stereoRectify function](http://docs.opencv.org/2.4/modules/calib3d/doc/camera_calibration_and_3d_reconstruction.html#void stereoRectify(InputArray cameraMatrix1, InputArray distCoeffs1, InputArray cameraMatrix2, InputArray distCoeffs2, Size imageSize, InputArray R, InputArray T, OutputArray R1, OutputArray R2, OutputArray P1, OutputArray P2, OutputArray Q, int flags, double alpha, Size newImageSize, Rect* validPixROI1, Rect* validPixROI2),
+The program plugs these resulting extrinsics into OpenCV's [stereoRectify function](http://tinyurl.com/y7m4aylu),
 which calculates the necessary rectification transformations and projection matrices
 to create rectified image pairs. The setting **Show_RectifiedImages** controls whether or
 not these rectified images are shown after calibration. If the setting **RectifiedImages_Path**
@@ -154,7 +155,7 @@ It responds to several hotkeys:
 **intrinsicInput_Filename**, and the program will print an error if this is not provided
 * `c`           — toggle ArUco marker coordinates/IDs being drawn
 
-![](utils/readme/preview.gif =250x)
+![](utils/readme/preview.gif)
 
 ### Detection Settings
 If the setting **Wait_NextDetectedImage** is activated, the program will wait until a key is pressed
