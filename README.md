@@ -23,7 +23,7 @@ by a comprehensive settings class, which is inputted as a YAML or XML file. Thes
 host of UI and output features, such as a live camera preview mode, the ability to save detected,
 undistorted, and rectified images, and the ability to display the 3D coordinates of an ArUco pattern.
 
-<img src="utils/readme/arucobox.png" width="500">
+<img src="utils/readme/arucobox.png" width="600" align="middle">
 
 This program was developed for a Middlebury College undergraduate summer research project,
 led by professor Daniel Scharstein. Camera calibration will be one component of
