@@ -23,7 +23,7 @@ by a comprehensive settings class, which is inputted as a YAML or XML file. Thes
 host of UI and output features, such as a live camera preview mode, the ability to save detected,
 undistorted, and rectified images, and the ability to display the 3D coordinates of an ArUco pattern.
 
-<img src="utils/readme/arucobox.png" width="600" align="middle">
+<img src="utils/readme/arucobox.png" width="550">
 
 This program was developed for a Middlebury College undergraduate summer research project,
 led by professor Daniel Scharstein. Camera calibration will be one component of
@@ -142,6 +142,9 @@ to create rectified image pairs. The setting **Show_RectifiedImages** controls w
 not these rectified images are shown after calibration. If the setting **RectifiedImages_Path**
 is changed from "0," the program will try to save these images to the path. It will
 print an error if this path does not exist (*the path must be created beforehand*).
+
+Using the utility program [imdiff](utils/imdiff.cpp), you can compare the rectified images
+and check how well the pixels are horizontally aligned.
 
 The program will output the resulting extrinsics in a file specified by the setting:
 **ExtrinsicOutput_Filename**. The file will contain the calibration configuration (time and pattern);
