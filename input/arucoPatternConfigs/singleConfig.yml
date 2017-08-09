@@ -1,0 +1,8 @@
+%YAML:1.0
+MarkerMap_Configs:
+  - ../input/markerMapConfigs/config1.yml
+Planes:
+  - XY
+xOffset: 1000
+yOffset: 1000
+Denominator: 125

@@ -15,19 +15,19 @@ Settings:
   SquareSize: .025
 
   #Filename for image list
-  imageList_Filename: "../input/imageLists/stereoChessboard.yml"
+  ImageList_Filename: "../input/imageLists/stereoChessboard.yml"
   #Filename for aruco config files
-  arucoConfigList_Filename: "0"
+  ArucoConfig_Filename: "0"
   #Intrinsic input filename. These intrinsics can be used as an initial estimate
   #for intrinsic calibration, as fixed intrinsics for stereo calibration, or to
   #preview undistortion in preview mode
   #Leave at "0" to calculate new intrinsics
-  intrinsicInput_Filename: "0"
+  IntrinsicInput_Filename: "0"
 
   #File to write results of inrinsic calibration
   IntrinsicOutput_Filename: "0"
   #File to write extrinsics of stereo calibration
-  ExtrinsicOutput_Filename: "../output/extrinsics/exStereoChessboard.yml"
+  ExtrinsicOutput_Filename: "../output/extrinsics/chessboardExtrinsics.yml"
 
   #LEAVE THESE SETTINGS AT "0" TO NOT SAVE IMAGES
   #Path at which to save undistorted images

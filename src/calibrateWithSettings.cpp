@@ -20,6 +20,15 @@ using namespace aruco;
 
 int main( int argc, char** argv )
 {
-    const char * inputSettingsFile = argc > 1 ? argv[1] : "settings.yml";
-    calibrateWithSettings(inputSettingsFile);
+    const char * inputSettingsFile;
+    if (argc != 2) {
+        cerr << "Usage: calibrateWithSettings [path to settings file]" << endl
+             << "The settings folder contains several example files with "
+                "descriptions of each parameter. Check the README for more detail." << endl;
+        return -1;
+    }
+    else {
+        inputSettingsFile = argv[1];
+        calibrateWithSettings(inputSettingsFile);
+    }
 }

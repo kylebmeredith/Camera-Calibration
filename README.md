@@ -1,5 +1,3 @@
-
-
 # Camera Calibration
 A comprehensive C++ camera calibration program that performs both intrinsic and stereo
 calibration and supports a non planar calibration rig.
@@ -25,12 +23,15 @@ by a comprehensive settings class, which is inputted as a YAML or XML file. Thes
 host of UI and output features, such as a live camera preview mode, the ability to save detected,
 undistorted, and rectified images, and the ability to display the 3D coordinates of an ArUco pattern.
 
-![](utils/readme/arucobox.png)
+<!-- ![](utils/readme/arucobox.png) -->
+<img src="utils/readme/arucobox.png" width="150">
 
 This program was developed for a Middlebury College undergraduate summer research project,
 led by professor Daniel Scharstein. Camera calibration will be one component of
 a pipeline designed to create datasets for 3D reconstruction on mobile devices.
-These datasets will become the next entry in the well known Middlebury Computer Vision Benchmark http://vision.middlebury.edu/.
+These datasets will become the next entry in the well known Middlebury Computer Vision
+Benchmark http://vision.middlebury.edu/. Here is [the poster](utils/readme/poster.png)
+from our summer research presentation.
 
 ## Installation
 ### Dependencies
@@ -64,7 +65,11 @@ are defined in [calibration.cpp](src/calibration.cpp), which can be included in 
 ## Usage
 The program is run from settings files, which are YAML or XML (this functionality is
 adapted from an [example calibration program](https://github.com/AhmedSamara/OpenCV-camera-calibration/blob/master/calibrate_camera.cpp) provided
-by OpenCV. The [settings directory](settings/) includes several example settings files, which contain detailed descriptions of each variable. Here is a sample program execution command from the build folder: `./calibrateWithSettings ../settings/intrinsicChessboardSettings.yml`
+by OpenCV). The [settings directory](settings/) includes several example settings files, which contain detailed descriptions of each variable. Here is a sample program execution command from the build folder: `./calibrateWithSettings ../settings/intrinsicChessboardSettings.yml`
+
+The program can also write a serialization for settings, using the settings class function write().
+To use this functionality, you must uncomment the other write() function outside of the settings class
+(check out the [OpenCV Filestorage documentation](http://docs.opencv.org/3.0-rc1/dd/d74/tutorial_file_input_output_with_xml_yml.html) for more information).
 
 The program has three modes: **INTRINSIC**, **STEREO**, and **PREVIEW**. It supports three calibration
 patterns: **CHESSBOARD**, **ARUCO_SINGLE**, and **ARUCO_BOX**.
@@ -75,25 +80,23 @@ The **INTRINSIC** and **STEREO** modes require a YAML/XML [image list](input/ima
 ### ArUco Calibration Patterns
 The ArUco patterns provide more accurate, robust, and efficient calibration. They are comprised
 of markers with unique IDs based on a modified Hamming code. The library functions can recognize and track
-these markers as a marker map, which is specified by a configuration file. This
+these markers within a marker map, which is specified by a configuration file. This
 functionality allows precise calibration with partial occlusion (check out this [article](https://www.uco.es/investiga/grupos/ava/node/26) for more details).
 
 The **ARUCO_SINGLE** pattern is a single, planar marker map, while the **ARUCO_BOX** is a specific non-planar
 rig with three marker maps mounted onto a precisely dimensioned box. Both of these patterns require a input
-[config list](input/configLists/) with paths to the marker map [config files](input/configs/),
+[aruco config](input/arucoPatternConfigs/) with paths to the marker map [config files](input/markerMapConfigs/),
 specified by the setting: **arucoConfigList_Filename**.
 
-To create your own ArUco pattern, use the [createUniqueMarkermaps](utils/createUniqueMarkermaps.cpp)
+To create your own ArUco pattern, use the [createArucoPatterns](utils/createArucoPatterns.cpp)
 utility program. This program will create a user specified amount of marker maps
 with no shared markers between them, allowing simultaneous detection of multiple patterns.
 It also allows a border of customizable width to be drawn around the marker maps. The program
-will output the marker map config files, along with a configList that specifies the settings
-and allows the program to properly detect the pattern. The program includes the novel functionality
-of printing the 3D coordinates of the marker corners, which requires knowledge of the plane,
-marker size, and border size. The setting **Show_ArucoMarkerCoordinates** toggles between
-drawing the marker coordinates or IDs on each detected image.
+will output the marker map images and config files, along with an arucoConfig file that specifies the settings and allows the program to properly detect the pattern. The calibration program includes
+the novel functionality of printing the 3D coordinates of ArUco marker corners, which requires
+knowledge of the 3D plane, marker size, and border size (the necessary values are included in the arucoConfig file). The setting **Show_ArucoMarkerCoordinates** toggles between drawing the marker coordinates or IDs on each detected image.
 
-If you wish to create a pattern that is neither a single map nor a box setup, the program
+If you wish to calibrate with a pattern that is neither a single map nor a box setup, the program
 will require some adaptation.
 
 ### INTRINSIC MODE    
@@ -102,7 +105,7 @@ images from a single viewpoint ([example set](input/images/intrinsicChessboard/)
 with all three calibration patterns, but the ArUco box requires intrinsic input (it will use this
 input as an initial estimate to be optimized). The recommended pipeline is to calculate
 camera intrinsics using a high quality set of chessboard images, then input these intrinsics
-into stereo calibration with a set of ArUco box images.   ([example settings file](settings/intrinsicChessboardSettings.yml))
+into stereo calibration with a set of ArUco box images.  
 
 Intrinsic calibration can be optimized by modifying the flags in the calibrateCamera function
 (check the API linked above for more information). The setting **Calibrate_FixDistCoeffs**
@@ -117,7 +120,7 @@ The program will output the resulting intrinsics in a file specified by the sett
 and the calibration results (camera matrix, distortion coefficients, and reprojection error).
 These intrinsic files can be used as intrinsic input for future calibration, using the setting: **intrinsicInput_Filename**.
 
-These intrinsic parameters can also be used to correct the radial distortion in the input
+Intrinsic parameters can also be used to correct the radial distortion in the input
 images. The setting **Show_UndistortedImages** controls whether or not these undistorted images
 are shown after calibration. If the setting **UndistortedImages_Path** is changed from "0,"
 the program will try to save these images to the path. It will print an error if this path does
@@ -160,6 +163,6 @@ It responds to several hotkeys:
 ### Detection Settings
 If the setting **Wait_NextDetectedImage** is activated, the program will wait until a key is pressed
 to progress to the next image. If not, it will only display the image for 50 ms. If the setting
-**DetectedImages_Path** is changed from "0" and it is not in PREVIEW mode, the program will
+**DetectedImages_Path** is changed from "0" and the program is not in PREVIEW mode, the program will
 try to save the images with the detected pattern drawn ([example ArUco box detection](output/detected/detected_0.jpg)).
 It will print an error if this path does not exist (*the path must be created beforehand*).
