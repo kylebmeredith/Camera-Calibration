@@ -13,10 +13,13 @@ feed preview. It supports three patterns: chessboard, ArUco single, and ArUco bo
 Read the read me for more information and guidance.
 */
 
-#include "opencv2/core/core.hpp"
-#include "opencv2/imgproc/imgproc.hpp"
-#include "opencv2/calib3d/calib3d.hpp"
-#include "opencv2/highgui/highgui.hpp"
+#include <opencv2/core.hpp>
+#include <opencv2/core/utility.hpp>
+#include <opencv2/imgproc.hpp>
+#include <opencv2/calib3d.hpp>
+#include <opencv2/imgcodecs.hpp>
+#include <opencv2/videoio.hpp>
+#include <opencv2/highgui.hpp>
 #include <aruco.h>
 
 #include <iostream>
@@ -979,7 +982,7 @@ stereoCalibration runStereoCalibration(Settings s, intrinsicCalibration &inCal, 
                inCal.objectPoints, inCal.imagePoints, inCal2.imagePoints,
                inCal.cameraMatrix, inCal.distCoeffs,
                inCal2.cameraMatrix, inCal2.distCoeffs,
-               s.imageSize, sterCal.R, sterCal.T, sterCal.E, sterCal.F, TermCriteria(CV_TERMCRIT_ITER+CV_TERMCRIT_EPS, 1000, 1e-10), CV_CALIB_FIX_INTRINSIC);
+               s.imageSize, sterCal.R, sterCal.T, sterCal.E, sterCal.F, CV_CALIB_FIX_INTRINSIC, TermCriteria(CV_TERMCRIT_ITER+CV_TERMCRIT_EPS, 1000, 1e-10));
 
     printf("\nStereo reprojection error = %.4f\n", err);
 
@@ -1146,6 +1149,5 @@ int calibrateWithSettings( const string inputSettingsFile )
         else if( (c & 255) == 27 || c == 'q' || c == 'Q' )
             break;
     }
-    destroyWindow("Detected");
     return 0;
 }
